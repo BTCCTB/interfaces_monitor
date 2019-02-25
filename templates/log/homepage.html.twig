@@ -1,5 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container">
+    <div class="row">
+        <!-- Log List -->
+        <div class="col-sm-12 col-md-8">
+            <h1>Latest logs</h1>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Job</th>
+                    {% for log_date in log_dates%}
+                        <th> {{ log_date }} </th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {% for job,logs in job_logs %}
+                    <td>{{ job }}</td>
+                         {% for log_date in log_dates %}
+                           <td>
+                               {% if logs[log_date] is defined %}
+                                <span class="fa fa-{{ (logs[log_date].start != null and logs[log_date].end != null) ? 'check' : 'exclamation-circle ' }}"></span>
+                               {% else %}
+                                   <span class="fa fa-times"></span>
+                               {% endif %}
+                           </td>
+                         {% endfor %}
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
