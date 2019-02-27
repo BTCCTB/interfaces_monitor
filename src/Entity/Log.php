@@ -36,10 +36,12 @@ class Log
      */
     private $message;
 
+
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Job", inversedBy="logs")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $interface_id;
+    private $job;
 
     public function getId(): ?int
     {
@@ -94,14 +96,14 @@ class Log
         return $this;
     }
 
-    public function getInterfaceId(): ?int
+    public function getJob(): ?Job
     {
-        return $this->interface_id;
+        return $this->job;
     }
 
-    public function setInterfaceId(int $interface_id): self
+    public function setJob(?Job $job): self
     {
-        $this->interface_id = $interface_id;
+        $this->job = $job;
 
         return $this;
     }

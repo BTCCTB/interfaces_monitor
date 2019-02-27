@@ -50,9 +50,11 @@ class LogRepository extends ServiceEntityRepository
     */
 
 
-  public function findLatestByJob()
+  public function findLatestByJob($job_id)
   {
     return $this->createQueryBuilder('j')
+      ->andWhere('j.job = :val')
+      ->setParameter('val', $job_id)
       ->orderBy('j.end', 'DESC')
       ->setMaxResults(7)
       ->getQuery()

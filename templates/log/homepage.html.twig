@@ -5,9 +5,10 @@
     <div class="row">
         <!-- Log List -->
         <div class="col-sm-12 col-md-8">
-            <h1>Latest logs</h1>
+            <h1>Job monitoring</h1>
 
-            <table class="table">
+
+            <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>Job</th>
@@ -17,20 +18,50 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    {% for job,logs in job_logs %}
-                    <td>{{ job }}</td>
+                {% for job,logs in job_logs %}
+                    <tr>
+                          <td>{{ job }}</td>
                          {% for log_date in log_dates %}
-                           <td>
-                               {% if logs[log_date] is defined %}
-                                <span class="fa fa-{{ (logs[log_date].start != null and logs[log_date].end != null) ? 'check' : 'exclamation-circle ' }}"></span>
+                             {% if logs[log_date] is defined %}
+                                   <td  class="table-{{logs[log_date]['color']}} data-toggle="tooltip" title="{{logs[log_date]['logs'].start|date('H:i:s')}} -> {{ logs[log_date]['logs'].end|date('H:i:s') }}">
+                                        <span class="fa fa-{{ (logs[log_date]['logs'].start != null and logs[log_date]['logs'].end != null) ? 'check' : 'exclamation-circle ' }}"></span>
+                                   </td>
                                {% else %}
-                                   <span class="fa fa-times"></span>
+                                   <td  class="table-secondary" data-toggle="tooltip" title="job did not run that day !!">
+                                    <span class="fa fa-times"></span>
+                                   </td>
                                {% endif %}
                            </td>
                          {% endfor %}
+                    </tr>
                     {% endfor %}
                 </tr>
+                </tbody>
+            </table>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>duration</th>
+                        <th> No end date </th>
+                        <th> Less 30 min </th>
+                        <th> Less 1 hour </th>
+                        <th> Less 2 hours  </th>
+                        <th> Less 4 hours  </th>
+                        <th> More 4 hours  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>color</td>
+                    <td class="table-danger"><span class="fa fa-exclamation-circle"></span></td>
+                    <td class="table-success"><span class="fa fa-check"></span></td>
+                    <td class="table-info"><span class="fa fa-check"></span></td>
+                    <td class="table-active"><span class="fa fa-check"></span></td>
+                    <td class="table-warning"><span class="fa fa-check"></span></td>
+                    <td class="table-danger"><span class="fa fa-exclamation-circle"></span></td>
+                </tr>
+
                 </tbody>
             </table>
         </div>
