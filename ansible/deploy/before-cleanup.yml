@@ -1,0 +1,66 @@
+---
+- name: Send notification message via Slack all options
+  slack:
+    token: "{{ slack_token }}"
+    domain: "{{ slack_domain }}"
+    msg: 'Server: {{ ansible_hostname }} | Check write permissions [{{ release_var_path }}]'
+    username: "{{ slack_headline }}"
+    icon_url: "{{ slack_icon_url }}"
+    channel: "{{ slack_channel }}"
+    parse: 'none'
+  delegate_to: localhost
+
+- name: Add write permissions
+  file:
+    state: directory
+    path: "{{ release_var_path }}"
+    owner: "apache"
+    group: "apache"
+    recurse: yes
+    mode: "u=rxw,g=rxw,o=rw"
+
+- name: Configure Apache so it is able to send email
+  seboolean:
+    name: "httpd_can_sendmail"
+    state: yes
+    persistent: yes
+  when: "ansible_distribution == 'CentOS' and not selinux.stdout is search('Disabled')"
+
+- name: Allow Apache to send mail on tcp port 2525
+  seport:
+    ports: 2525
+    proto: "tcp"
+    setype: "smtp_port_t"
+    state: present
+  when: "ansible_distribution == 'CentOS' and not selinux.stdout is search('Disabled')"
+
+- name: Allow Apache to send mail on tcp port 587
+  seport:
+    ports: 587
+    proto: "tcp"
+    setype: "smtp_port_t"
+    state: present
+  when: "ansible_distribution == 'CentOS' and not selinux.stdout is search('Disabled')"
+
+- name: Allow Apache to send mail on tcp port 25
+  seport:
+    ports: 25
+    proto: "tcp"
+    setype: "smtp_port_t"
+    state: present
+  when: "ansible_distribution == 'CentOS' and not selinux.stdout is search('Disabled')"
+
+- name: Configure Apache so it is able to connect to BIS
+  seboolean:
+    name: "httpd_can_network_connect_db"
+    state: yes
+    persistent: yes
+  when: "ansible_distribution == 'CentOS' and not selinux.stdout is search('Disabled')"
+
+- name: Configure Apache so it is able to connect to LDAP/AD
+  seboolean:
+    name: "httpd_can_connect_ldap"
+    state: yes
+    persistent: yes
+  when: "ansible_distribution == 'CentOS' and not selinux.stdout is search('Disabled')"
+

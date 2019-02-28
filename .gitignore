@@ -11,3 +11,17 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+###< squizlabs/php_codesniffer ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> Ansistrano ###
+ansible/.ssh/*
+!ansible/.ssh/.gitkeep
+###< Ansistrano ###
