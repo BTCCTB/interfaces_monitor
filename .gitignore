@@ -25,3 +25,10 @@
 ansible/.ssh/*
 !ansible/.ssh/.gitkeep
 ###< Ansistrano ###
+
+###> Docker ###
+docker/data/*
+!docker/data/.gitkeep
+docker/logs/*
+!docker/logs/.gitkeep
+###< Docker ###

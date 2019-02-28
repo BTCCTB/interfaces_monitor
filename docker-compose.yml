@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql:cached
+      - ./docker/logs/mysql:/var/log/mysql:cached
+    environment:
+      MYSQL_DATABASE: taskrunner
+      MYSQL_USER: taskrunner
+      MYSQL_PASSWORD: taskrunner
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mysql
+    environment:
+      PMA_HOST: 'mysql'
+      PMA_USER: root
+      PMA_PASSWORD: toor
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - 8080:80
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 8888:8025
+      - 1025:1025
