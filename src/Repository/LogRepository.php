@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Log;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Log|null find($id, $lockMode = null, $lockVersion = null)
@@ -26,38 +25,37 @@ class LogRepository extends ServiceEntityRepository
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    return $this->createQueryBuilder('l')
+    ->andWhere('l.exampleField = :val')
+    ->setParameter('val', $value)
+    ->orderBy('l.id', 'ASC')
+    ->setMaxResults(10)
+    ->getQuery()
+    ->getResult()
+    ;
     }
-    */
+     */
 
     /*
     public function findOneBySomeField($value): ?Log
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+    return $this->createQueryBuilder('l')
+    ->andWhere('l.exampleField = :val')
+    ->setParameter('val', $value)
+    ->getQuery()
+    ->getOneOrNullResult()
+    ;
     }
-    */
+     */
 
-
-  public function findLatestByJob($job_id)
-  {
-    return $this->createQueryBuilder('j')
-      ->andWhere('j.job = :val')
-      ->setParameter('val', $job_id)
-      ->orderBy('j.end', 'DESC')
-      ->setMaxResults(7)
-      ->getQuery()
-      ->getResult();
-  }
+    public function findLatestByJob($jobId)
+    {
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.job = :val')
+            ->setParameter('val', $jobId)
+            ->orderBy('j.end', 'DESC')
+            ->setMaxResults(7)
+            ->getQuery()
+            ->getResult();
+    }
 }

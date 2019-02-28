@@ -38,17 +38,17 @@ class Job
         $this->logs = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId():  ? int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName() :  ? string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name) : self
     {
         $this->name = $name;
 
@@ -86,12 +86,12 @@ class Job
         return $this;
     }
 
-    public function getFrequency(): ?string
+    public function getFrequency():  ? string
     {
         return $this->frequency;
     }
 
-    public function setFrequency(?string $frequency): self
+    public function setFrequency(string $frequency) : self
     {
         $this->frequency = $frequency;
 
