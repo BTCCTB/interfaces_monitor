@@ -55,6 +55,30 @@
   slack:
     token: "{{ slack_token }}"
     domain: "{{ slack_domain }}"
+    msg: 'Server: {{ ansible_hostname }} | Check database & user privileges'
+    username: "{{ slack_headline }}"
+    icon_url: "{{ slack_icon_url }}"
+    channel: "{{ slack_channel }}"
+    parse: 'none'
+  delegate_to: localhost
+
+- name: MariaDB | Create a new database
+  mysql_db:
+    name: "{{ database_name }}"
+    state: present
+
+- name: MariaDB | User privileges
+  mysql_user:
+    name: "{{ database_user }}"
+    host: "%"
+    append_privs: true
+    priv: "{{ database_name }}.*:ALL,GRANT"
+    state: present
+
+- name: Send notification message via Slack all options
+  slack:
+    token: "{{ slack_token }}"
+    domain: "{{ slack_domain }}"
     msg: 'Server: {{ ansible_hostname }} | Check database & run migrations if needed'
     username: "{{ slack_headline }}"
     icon_url: "{{ slack_icon_url }}"
@@ -74,6 +98,11 @@
 
 - name: Install bundle assets
   command: '{{ release_console_path }} assets:install --symlink --env={{ application_env }}'
+
+- name: Dump .env files for current application_env
+  command: '{{ php_path }} /usr/local/bin/composer dump-env {{ application_env }}'
+  args:
+    chdir: '{{ ansistrano_release_path.stdout }}'
 
 #- name: Install Node dependencies
 #  command: yarn install
@@ -104,7 +133,7 @@
     mode: "u=rx,g=rx,o=r"
     recurse: yes
 
-- name: Setup directory permissions for var/logs
+- name: Setup directory permissions for var/log
   become: true
   file:
     state: directory
@@ -115,7 +144,6 @@
     mode: "u=rxw,g=rxw,o=rw"
   with_items:
     - '{{ release_var_path }}'
-    - '{{ release_logs_path }}'
 
 - name: Send notification message via Slack all options
   slack:

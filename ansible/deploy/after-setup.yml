@@ -30,7 +30,7 @@
   blockinfile:
     dest: '{{ ansistrano_deploy_to }}/.ssh/id_rsa'
     block: '{{ deploy_key_private }}'
-    marker: '-----{mark} RSA PRIVATE KEY-----'
+    marker: '-----{mark} OPENSSH PRIVATE KEY-----'
     create: yes
 
 - name: GIT | Protect deploy key
