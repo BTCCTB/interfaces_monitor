@@ -1,0 +1,26 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    tasks:
+        composer:
+            file: ./composer.json
+            no_check_all: true
+        git_conflict: ~
+        clover_coverage:
+            clover_file: ./var/log/coverage.xml
+            level: 75
+        phpcs:
+            standard: "phpcs.xml"
+        phpmd:
+            ruleset: ['codesize.xml']
+            exclude: ['assets', 'bin', 'config', 'public', 'templates', 'tests', 'translations', 'var', 'vendor']
+        phpcpd:
+            directory: '.'
+            exclude: ['assets', 'bin', 'config', 'public', 'templates', 'tests', 'translations', 'var', 'vendor']
+            min_lines: 5
+            min_tokens: 70
+        phpunitbridge:
+            always_execute: true
+        phpversion:
+            project: '7.2'
+        yamllint: ~

@@ -16,3 +16,5 @@ $ git clone git@github.com:BTCCTB/interfaces_monitor.git
 $ cd interfaces_monitor/
 $ composer install
 ```
+
+[1]: https://symfony.com/doc/current/reference/requirements.html
