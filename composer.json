@@ -1,4 +1,6 @@
 {
+    "name": "btcctb/interfaces_monitor",
+    "description": "Interfaces monitor",
     "type": "project",
     "license": "proprietary",
     "require": {
@@ -51,6 +53,24 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "serve":[
+            "docker-compose start",
+            "bin/console server:run"
+        ],
+        "stop":[
+            "docker-compose stop"
+        ],
+        "db-init":[
+            "bin/console doctrine:database:drop --if-exists --force",
+            "bin/console doctrine:database:create",
+            "bin/console doctrine:migrations:migrate"
+        ],
+        "db-migrate":[
+            "bin/console doctrine:migrations:migrate"
+        ],
+        "test":[
+            "bin/phpunit"
         ]
     },
     "conflict": {
@@ -61,5 +81,16 @@
             "allow-contrib": false,
             "require": "4.2.*"
         }
+    },
+    "require-dev": {
+        "jakub-onderka/php-console-highlighter": "^0.3.2",
+        "jakub-onderka/php-parallel-lint": "^0.9.2",
+        "phpmd/phpmd": "^2.6",
+        "phpro/grumphp": "^0.13",
+        "sebastian/phpcpd": "^4.1",
+        "squizlabs/php_codesniffer": "^3.0",
+        "symfony/browser-kit": "^4.0",
+        "symfony/css-selector": "^4.0",
+        "symfony/phpunit-bridge": "^4.0"
     }
 }

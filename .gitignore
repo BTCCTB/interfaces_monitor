@@ -4,10 +4,33 @@
 /.env.local.php
 /.env.*.local
 /public/bundles/
-/var/
+/var/cache/*
+/var/log/*
+!/var/log/.gitkeep
 /vendor/
 ###< symfony/framework-bundle ###
 
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+###< squizlabs/php_codesniffer ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> Ansistrano ###
+ansible/.ssh/*
+!ansible/.ssh/.gitkeep
+###< Ansistrano ###
+
+###> Docker ###
+docker/data/*
+!docker/data/.gitkeep
+docker/logs/*
+!docker/logs/.gitkeep
+###< Docker ###
