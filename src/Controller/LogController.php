@@ -30,15 +30,14 @@ class LogController extends AbstractController
         $jobs = $jobRepository->findAll();
         $repository = $em->getRepository(Log::class);
         $jobLogs = [];
-        $jobLogsDate = [];
         foreach ($jobs as $job) {
-            $jLogs = $repository->findLatestByJob($job->getId());
+          $jobLogsDate = [];
+          $jLogs = $repository->findLatestByJob($job->getId());
             foreach ($jLogs as $jLog) {
                 $lStart = $jLog->getStart()->format('Y-m-d');
-                //$duration= ($j_log->getEnd() - $j_log->getStart()) / 60;
                 if ($jLog->getEnd()) {
-                    $interval = $jLog->getEnd()->diff($jLog->getStart());
-                    $duration = $interval->format('%i') . "\n";
+                  $delta_T = $jLog->getEnd()->format('U') - $jLog->getStart()->format('U');
+                  $duration = round($delta_T/60);
                 } else {
                     $duration = null;
                 }
@@ -47,7 +46,7 @@ class LogController extends AbstractController
                     'logs' => $jLog,
                 ];
             }
-            $jobLogs[$job->getName()] = $jobLogsDate;
+            $jobLogs[$job->getName()."_".$job->getFrequency()] = $jobLogsDate;
         }
 
         $m = date('m');
@@ -57,6 +56,7 @@ class LogController extends AbstractController
         for ($i = 7; $i >= 0; $i--) {
             $logDates[$i] = date('Y-m-d', mktime(0, 0, 0, $m, ($de - $i), $y));
         }
+
 
         return $this->render('log/homepage.html.twig', ['job_logs' => $jobLogs, 'log_dates' => $logDates]);
     }
@@ -77,8 +77,8 @@ class LogController extends AbstractController
             // ligth blue
             $color = 'info';
         } elseif ($duration < 120) {
-            //grey
-            $color = 'active';
+            //blue
+            $color = 'primary';
         } elseif ($duration < 240) {
             //orange
             $color = 'warning';
