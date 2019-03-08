@@ -106,4 +106,86 @@ class Log
 
         return $this;
     }
+
+    /**
+     * Generate duration from start en end time
+     *
+     * @return float|null The duration in minutes
+     */
+    public function getDuration() :  ? float
+    {
+        if ($this->getEnd() !== null) {
+            $deltaT = $this->getEnd()->format('U') - $this->getStart()->format('U');
+            return round($deltaT / 60);
+        }
+
+        return null;
+    }
+
+    /**
+     * Convert duration in human readable time [hh:mm]
+     *
+     * @return string|null The duration in human readable time
+     */
+    public function getPrettyDuration() :  ? string
+    {
+        if ($this->getDuration() !== null) {
+            return sprintf('%02d:%02d', floor($this->getDuration() / 60), $this->getDuration() % 60);
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the duration color label based on execution time
+     *
+     * @return string
+     */
+    public function getDurationColor() : string
+    {
+        if ($this->getDuration() === null) {
+            $color = 'secondary';
+        } elseif ($this->getDuration() < 30) {
+            //green
+            $color = 'success';
+        } elseif ($this->getDuration() < 60) {
+            // ligth blue
+            $color = 'info';
+        } elseif ($this->getDuration() < 120) {
+            //blue
+            $color = 'primary';
+        } elseif ($this->getDuration() < 240) {
+            //orange
+            $color = 'warning';
+        } else {
+            //red
+            $color = 'danger';
+        }
+
+        return $color;
+    }
+
+    public function getDurationIcon(): string
+    {
+        if ($this->getDuration() === null) {
+            $icon = '<i class="fa fa-question-circle"></i>';
+        } elseif ($this->getDuration() < 30) {
+            //green
+            $icon = '<i class="fa fa-check-circle"></i>';
+        } elseif ($this->getDuration() < 60) {
+            // ligth blue
+            $icon = '<i class="fa fa-check-circle"></i>';
+        } elseif ($this->getDuration() < 120) {
+            //blue
+            $icon = '<i class="fa fa-check-circle"></i>';
+        } elseif ($this->getDuration() < 240) {
+            //orange
+            $icon = '<i class="fa fa-check-circle"></i>';
+        } else {
+            //red
+            $icon = '<i class="fa fa-warning"></i>';
+        }
+
+        return $icon;
+    }
 }

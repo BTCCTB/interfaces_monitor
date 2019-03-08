@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Job;
 use App\Entity\Log;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -19,42 +20,36 @@ class LogRepository extends ServiceEntityRepository
         parent::__construct($registry, Log::class);
     }
 
-    // /**
-    //  * @return Log[] Returns an array of Log objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-    return $this->createQueryBuilder('l')
-    ->andWhere('l.exampleField = :val')
-    ->setParameter('val', $value)
-    ->orderBy('l.id', 'ASC')
-    ->setMaxResults(10)
-    ->getQuery()
-    ->getResult()
-    ;
-    }
+    /**
+     * Get X last execution log for a given job
+     *
+     * @param Job $job
+     * @param int $nbExec Number of execution to get
+     * @return Log[]
      */
-
-    /*
-    public function findOneBySomeField($value): ?Log
+    public function findLastByJob(Job $job, int $nbExec = 5): array
     {
-    return $this->createQueryBuilder('l')
-    ->andWhere('l.exampleField = :val')
-    ->setParameter('val', $value)
-    ->getQuery()
-    ->getOneOrNullResult()
-    ;
+        return $this->createQueryBuilder('l')
+            ->where('l.job = :job_id')
+            ->setParameter(':job_id', $job->getId())
+            ->orderBy('l.start', 'DESC')
+            ->setMaxResults($nbExec)
+            ->getQuery()
+            ->getResult();
     }
-     */
 
-    public function findLatestByJob($jobId)
+    /**
+     * Find all execution log for a given job
+     *
+     * @param Job $job
+     * @return Log[]
+     */
+    public function findAllByJob(Job $job)
     {
-        return $this->createQueryBuilder('j')
-            ->andWhere('j.job = :val')
-            ->setParameter('val', $jobId)
-            ->orderBy('j.end', 'DESC')
-            ->setMaxResults(7)
+        return $this->createQueryBuilder('l')
+            ->where('l.job = :job_id')
+            ->setParameter(':job_id', $job->getId())
+            ->orderBy('l.start', 'DESC')
             ->getQuery()
             ->getResult();
     }

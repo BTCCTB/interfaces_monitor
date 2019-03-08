@@ -33,9 +33,15 @@ class Job
      */
     private $frequency;
 
+    /**
+     * @var Log[] Array of log for this job execution
+     */
+    private $arrayLogs;
+
     public function __construct()
     {
         $this->logs = new ArrayCollection();
+        $this->arrayLogs = [];
     }
 
     public function getId():  ? int
@@ -96,5 +102,21 @@ class Job
         $this->frequency = $frequency;
 
         return $this;
+    }
+
+    /**
+     * @param $arrayLog Log[]
+     */
+    public function setArrayLogs($arrayLog)
+    {
+        $this->arrayLogs = $arrayLog;
+    }
+
+    /**
+     * @return Log[]
+     */
+    public function getArrayLogs()
+    {
+        return $this->arrayLogs;
     }
 }

@@ -10,7 +10,8 @@ namespace App\Controller;
 
 use App\Entity\Job;
 use App\Entity\Log;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\JobRepository;
+use App\Repository\LogRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -18,75 +19,44 @@ class LogController extends AbstractController
 {
 
     /**
-     * @Route("/")
-     * @param EntityManagerInterface $em
+     * @Route("/", name="log_index", methods={"GET"})
+     * @param LogRepository $logRepository
+     * @param JobRepository $jobRepository
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-
-    public function homepage(EntityManagerInterface $em): \Symfony\Component\HttpFoundation\Response
+    public function homepage(LogRepository $logRepository, JobRepository $jobRepository): \Symfony\Component\HttpFoundation\Response
     {
-        $jobRepository = $em->getRepository(Job::class);
+        $nbExec = 10;
         $jobs = $jobRepository->findAll();
-        $repository = $em->getRepository(Log::class);
-        $jobLogs = [];
+        /**
+         * @var Job[]
+         */
+        $jobsLogs = [];
+
         foreach ($jobs as $job) {
-          $jobLogsDate = [];
-          $jLogs = $repository->findLatestByJob($job->getId());
-            foreach ($jLogs as $jLog) {
-                $lStart = $jLog->getStart()->format('Y-m-d');
-                if ($jLog->getEnd()) {
-                  $delta_T = $jLog->getEnd()->format('U') - $jLog->getStart()->format('U');
-                  $duration = round($delta_T/60);
-                } else {
-                    $duration = null;
-                }
-                $jobLogsDate[$lStart] = [
-                    'color' => $this->getDurationColor($duration),
-                    'logs' => $jLog,
-                ];
-            }
-            $jobLogs[$job->getName()."_".$job->getFrequency()] = $jobLogsDate;
+            $job->setArrayLogs($logRepository->findLastByJob($job, $nbExec));
+            $jobsLogs[$job->getId()] = $job;
         }
 
-        $m = date('m');
-        $de = date('d');
-        $y = date('Y');
-        $logDates = [];
-        for ($i = 7; $i >= 0; $i--) {
-            $logDates[$i] = date('Y-m-d', mktime(0, 0, 0, $m, ($de - $i), $y));
-        }
-
-
-        return $this->render('log/homepage.html.twig', ['job_logs' => $jobLogs, 'log_dates' => $logDates]);
+        return $this->render('log/index.html.twig', ['jobsLogs' => $jobsLogs, 'nbExec' => $nbExec]);
     }
 
     /**
-     * @param $duration
+     * @Route("/detail/{id}", name="log_detail", methods={"GET"})
+     * @param Job           $job
+     * @param LogRepository $logRepository
      *
-     * @return string
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function getDurationColor($duration): string
+    public function detail(Job $job, LogRepository $logRepository)
     {
-        if ($duration === null) {
-            $color = 'danger';
-        } elseif ($duration < 30) {
-            //green
-            $color = 'success';
-        } elseif ($duration < 60) {
-            // ligth blue
-            $color = 'info';
-        } elseif ($duration < 120) {
-            //blue
-            $color = 'primary';
-        } elseif ($duration < 240) {
-            //orange
-            $color = 'warning';
-        } else {
-            //red
-            $color = 'danger';
-        }
-
-        return $color;
+        return $this->render(
+            'log/detail.html.twig',
+            [
+                'job' => $job,
+                'logs' => $logRepository->findAllByJob($job),
+            ]
+        );
     }
 }

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Last job execution time</h1>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover log">
+            <thead>
+            <tr>
+                <th>Job</th>
+                <th>Frequency</th>
+                <th colspan="{{ nbExec}}">Last {{ nbExec }} execution</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for job in jobsLogs %}
+                <tr>
+                    <td class="job_name"><a href="{{ path('log_detail', { 'id': job.id }) }}"><i class="fa fa-chevron-circle-right"></i> {{ job.name }}</a></td>
+                    <td class="job_frequency">{{ job.frequency }}</td>
+                    {% set execution = nbExec %}
+                    {% for log in job.arrayLogs %}
+                        <td  class="job_execution list-group-item-{{ log.durationColor }}" data-toggle="tooltip" title="Execution time: {{ log.prettyDuration }} | Start time: {{ log.start|date('d/m/Y H:i:s')}} | End time: {{ log.end|date('d/m/Y H:i:s') }}">
+                            {{ log.durationIcon|raw }}
+                            <br/><span class="job_date">
+                                {{ log.start|date('d/m/Y')}}
+                                {% if job.frequency == 'hourly' %}
+                                <br/>{{ log.start|date('H:i:s')}}
+                                {% endif %}
+                            </span>
+                        </td>
+                        {% set execution = execution - 1 %}
+                    {% endfor %}
+                    {% if execution > 0 %}
+                        <td colspan="{{ execution }}"></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block sidebar %}
+    {% include 'log/_sidebar.html.twig' %}
+{% endblock %}
+
