@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1555522796">
-  <project timestamp="1555522796">
+<coverage generated="1555522805">
+  <project timestamp="1555522805">
     <package name="App\Command">
       <file name="/home/dlagae/Projects/interfaces_monitor/src/Command/UserPromoteCommand.php">
         <class name="App\Command\UserPromoteCommand" namespace="App\Command">

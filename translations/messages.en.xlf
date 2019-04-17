@@ -73,12 +73,6 @@
         <target>Back to monitor</target>
       </segment>
     </unit>
-    <unit id="2LzF14u" name="admin.action.new">
-      <segment>
-        <source>admin.action.new</source>
-        <target>New</target>
-      </segment>
-    </unit>
     <unit id="BDD_l3P" name="App_Entity_Job">
       <segment>
         <source>App_Entity_Job</source>
@@ -86,6 +80,11 @@
       </segment>
     </unit>
     <unit id="3VAj.IF" name="admin.label.job.list">
+      <notes>
+        <note>parameters:</note>
+        <note> '%entity_name%': App_Entity_Job</note>
+        <note> '%entity_label%': App_Entity_Job</note>
+      </notes>
       <segment>
         <source>admin.label.job.list</source>
         <target>List of jobs</target>
@@ -95,12 +94,6 @@
       <segment>
         <source>admin.label.job</source>
         <target>Job</target>
-      </segment>
-    </unit>
-    <unit id="1SbYo_0" name="admin.action.delete">
-      <segment>
-        <source>admin.action.delete</source>
-        <target>Delete</target>
       </segment>
     </unit>
     <unit id="CgGk8fC" name="form.job.label.name">
@@ -113,18 +106,6 @@
       <segment>
         <source>form.job.label.frequency</source>
         <target>Frequency</target>
-      </segment>
-    </unit>
-    <unit id="7WnZa6t" name="main.menu.logout.label">
-      <segment>
-        <source>main.menu.logout.label</source>
-        <target>Logout</target>
-      </segment>
-    </unit>
-    <unit id="BH8sxTq" name="main.menu.login.label">
-      <segment>
-        <source>main.menu.login.label</source>
-        <target>Login</target>
       </segment>
     </unit>
   </file>
