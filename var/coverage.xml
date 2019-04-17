@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1555522712">
-  <project timestamp="1555522712">
+<coverage generated="1555522796">
+  <project timestamp="1555522796">
     <package name="App\Command">
       <file name="/home/dlagae/Projects/interfaces_monitor/src/Command/UserPromoteCommand.php">
         <class name="App\Command\UserPromoteCommand" namespace="App\Command">
@@ -288,52 +288,6 @@
         <line num="198" type="stmt" count="0"/>
         <metrics loc="199" ncloc="140" classes="1" methods="16" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="88" coveredstatements="0" elements="104" coveredelements="0"/>
       </file>
-      <file name="/home/dlagae/Projects/interfaces_monitor/src/Entity/LogMessage.php">
-        <class name="App\Entity\LogMessage" namespace="App\Entity">
-          <metrics complexity="15" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="0" elements="40" coveredelements="0"/>
-        </class>
-        <line num="40" type="method" name="getId" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="41" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="0"/>
-        <line num="43" type="stmt" count="0"/>
-        <line num="45" type="method" name="getTime" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="46" type="stmt" count="0"/>
-        <line num="47" type="stmt" count="0"/>
-        <line num="48" type="stmt" count="0"/>
-        <line num="50" type="method" name="setTime" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="51" type="stmt" count="0"/>
-        <line num="52" type="stmt" count="0"/>
-        <line num="54" type="stmt" count="0"/>
-        <line num="55" type="stmt" count="0"/>
-        <line num="57" type="method" name="getType" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="58" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
-        <line num="60" type="stmt" count="0"/>
-        <line num="62" type="method" name="setType" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="63" type="stmt" count="0"/>
-        <line num="64" type="stmt" count="0"/>
-        <line num="66" type="stmt" count="0"/>
-        <line num="67" type="stmt" count="0"/>
-        <line num="69" type="method" name="getMessage" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="70" type="stmt" count="0"/>
-        <line num="71" type="stmt" count="0"/>
-        <line num="72" type="stmt" count="0"/>
-        <line num="74" type="method" name="setMessage" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="75" type="stmt" count="0"/>
-        <line num="76" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
-        <line num="79" type="stmt" count="0"/>
-        <line num="81" type="method" name="getLog" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="82" type="stmt" count="0"/>
-        <line num="83" type="stmt" count="0"/>
-        <line num="84" type="stmt" count="0"/>
-        <line num="86" type="method" name="setLog" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="87" type="stmt" count="0"/>
-        <line num="88" type="stmt" count="0"/>
-        <line num="90" type="stmt" count="0"/>
-        <line num="91" type="stmt" count="0"/>
-        <metrics loc="92" ncloc="71" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="0" elements="40" coveredelements="0"/>
-      </file>
       <file name="/home/dlagae/Projects/interfaces_monitor/src/Entity/Role.php">
         <class name="App\Entity\Role" namespace="App\Entity">
           <metrics complexity="15" methods="10" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="9" elements="29" coveredelements="15"/>
@@ -585,16 +539,6 @@
         <line num="20" type="stmt" count="0"/>
         <metrics loc="58" ncloc="6" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
       </file>
-      <file name="/home/dlagae/Projects/interfaces_monitor/src/Repository/LogMessageRepository.php">
-        <class name="App\Repository\LogMessageRepository" namespace="App\Repository">
-          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
-        </class>
-        <line num="17" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="18" type="stmt" count="0"/>
-        <line num="19" type="stmt" count="0"/>
-        <line num="20" type="stmt" count="0"/>
-        <metrics loc="50" ncloc="14" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
-      </file>
       <file name="/home/dlagae/Projects/interfaces_monitor/src/Repository/LogRepository.php">
         <class name="App\Repository\LogRepository" namespace="App\Repository">
           <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="0" elements="23" coveredelements="0"/>
@@ -660,6 +604,6 @@
         <metrics loc="34" ncloc="20" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="7" coveredelements="0"/>
       </file>
     </package>
-    <metrics files="19" loc="1681" ncloc="1027" classes="19" methods="105" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="426" coveredstatements="46" elements="531" coveredelements="72"/>
+    <metrics files="17" loc="1539" ncloc="942" classes="17" methods="95" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="392" coveredstatements="46" elements="487" coveredelements="72"/>
   </project>
 </coverage>
