@@ -12,14 +12,15 @@ use App\Entity\Job;
 use App\Entity\Log;
 use App\Repository\JobRepository;
 use App\Repository\LogRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 class LogController extends AbstractController
 {
 
     /**
      * @Route("/", name="log_index", methods={"GET"})
+     *
      * @param LogRepository $logRepository
      * @param JobRepository $jobRepository
      *
@@ -44,6 +45,7 @@ class LogController extends AbstractController
 
     /**
      * @Route("/detail/{id}", name="log_detail", methods={"GET"})
+     *
      * @param Job           $job
      * @param LogRepository $logRepository
      *

@@ -1,0 +1,14 @@
+easy_admin:
+  entities:
+    App_Entity_Job:
+      class: App\Entity\Job
+      disabled_actions: ['export']
+      list:
+        title: admin.label.job.list
+        actions:
+          - { name: 'show', icon: 'search', label: admin.action.show }
+          - { name: 'edit', icon: 'pencil', label: admin.action.edit }
+      form:
+        fields:
+          - { property: 'name', label: form.job.label.name }
+          - { property: 'frequency', label: form.job.label.frequency }

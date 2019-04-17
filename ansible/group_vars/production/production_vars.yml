@@ -16,3 +16,6 @@ mailer_user: "{{ vault_mailer_user }}"
 mailer_password: "{{ vault_mailer_password }}"
 mailer_encryption: 'tls'
 mailer_auth_mode: 'login'
+sso_base_url: '{{ vault_sso_base_url }}'
+sso_idp_x509: '{{ vault_sso_idp_x509 }}'
+sso_sp_key: '{{ vault_sso_sp_key }}'

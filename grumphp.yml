@@ -6,17 +6,19 @@ parameters:
             file: ./composer.json
             no_check_all: true
         git_conflict: ~
+        securitychecker: ~
         clover_coverage:
-            clover_file: ./var/log/coverage.xml
-            level: 75
+            clover_file: ./var/coverage.xml
+            level: 1 # Should be adapted to 50-70
         phpcs:
             standard: "phpcs.xml"
+            report: "full"
         phpmd:
             ruleset: ['codesize.xml']
-            exclude: ['assets', 'bin', 'config', 'public', 'templates', 'tests', 'translations', 'var', 'vendor']
+            exclude: ['assets', 'bin', 'config', '.docker', 'public', 'templates', 'tests', 'translations', 'var', 'vendor']
         phpcpd:
             directory: '.'
-            exclude: ['assets', 'bin', 'config', 'public', 'templates', 'tests', 'translations', 'var', 'vendor']
+            exclude: ['assets', 'bin', 'config', '.docker', 'public', 'templates', 'tests', 'translations', 'var', 'vendor']
             min_lines: 5
             min_tokens: 70
         phpunitbridge:

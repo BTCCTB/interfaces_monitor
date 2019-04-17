@@ -1,3 +1,7 @@
+###> phpstorm ###
+/.idea/*
+!/.idea/inspectionProfiles/Project_Default.xml
+###< phpstorm ###
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -28,9 +32,7 @@ ansible/.ssh/*
 !ansible/.ssh/.gitkeep
 ###< Ansistrano ###
 
-###> Docker ###
-docker/data/*
-!docker/data/.gitkeep
-docker/logs/*
-!docker/logs/.gitkeep
-###< Docker ###
+###> docker ###
+/.docker/data/db/*
+!/.docker/data/db/.gitkeep
+###< docker ###

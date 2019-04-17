@@ -1,0 +1,30 @@
+security:
+    providers:
+        user_provider:
+            entity: { class: App\Entity\User, property: email }
+
+    always_authenticate_before_granting: true
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern:    ^/
+            anonymous: true
+            saml:
+                username_attribute: uid
+                user_factory: 'App\Security\UserFactory'
+                persist_user: true
+                check_path: /saml/acs
+                login_path: /saml/login
+            logout:
+                path: /saml/logout
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/.*/translation/, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/saml/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/saml/metadata, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }

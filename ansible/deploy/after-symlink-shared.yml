@@ -12,8 +12,8 @@
 
 - name: Set up infrastructure-related parameters
   template:
-    src: '{{ playbook_dir }}/templates/.env.prod.local.j2'
-    dest: '{{ ansistrano_release_path.stdout }}/.env.prod.local'
+    src: '{{ playbook_dir }}/templates/.env.local.j2'
+    dest: '{{ ansistrano_release_path.stdout }}/.env.{{ application_env }}.local'
 
 - name: Send notification message via Slack all options
   slack:

@@ -1,0 +1,21 @@
+httplug:
+    plugins:
+        redirect:
+            preserve_header: true
+
+    discovery:
+        client: 'auto'
+
+    clients:
+        loco:
+            factory: 'httplug.factory.guzzle6'
+            plugins:
+                - httplug.plugin.content_length
+                - httplug.plugin.logger
+            config:
+                timeout: 2
+        app:
+            http_methods_client: true
+            plugins:
+                - 'httplug.plugin.content_length'
+                - 'httplug.plugin.redirect'

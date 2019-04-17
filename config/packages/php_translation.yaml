@@ -1,0 +1,17 @@
+parameters:
+    locale: 'en'
+    app.locales: [en]
+
+translation:
+    locales: '%app.locales%'
+    edit_in_place:
+        enabled: true
+        config_name: default
+        activator: php_translation.edit_in_place.activator
+    configs:
+        app:
+            dirs: ["%kernel.project_dir%/templates", "%kernel.project_dir%/src"]
+            output_dir: "%kernel.project_dir%/translations"
+            excluded_names: ["*TestCase.php", "*Test.php"]
+            excluded_dirs: [cache, data, logs]
+            remote_storage: ["php_translation.adapter.loco"]

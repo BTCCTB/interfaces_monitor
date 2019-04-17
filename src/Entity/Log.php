@@ -116,6 +116,7 @@ class Log
     {
         if ($this->getEnd() !== null) {
             $deltaT = $this->getEnd()->format('U') - $this->getStart()->format('U');
+
             return round($deltaT / 60);
         }
 
@@ -187,5 +188,12 @@ class Log
         }
 
         return $icon;
+    }
+
+    public function __toString()
+    {
+        return "Exec. time: " . $this->getPrettyDuration() . " | " .
+        "Status: " . $this->getStatus() . " | " .
+        "Message: " . $this->getMessage();
     }
 }

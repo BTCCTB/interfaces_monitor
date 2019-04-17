@@ -11,6 +11,17 @@
         <ini name="error_reporting" value="-1" />
         <env name="APP_ENV" value="test" />
         <env name="SHELL_VERBOSITY" value="-1" />
+
+        <!-- ###+ php-translation/loco-adapter ### -->
+        <env name="LOCO_PROJECT_API_KEY" value=""/>
+        <!-- ###- php-translation/loco-adapter ### -->
+
+        <!-- ###+ symfony/swiftmailer-bundle ### -->
+        <!-- For Gmail as a transport, use: "gmail://username:password@localhost" -->
+        <!-- For a generic SMTP server, use: "smtp://localhost:25?encryption=&auth_mode=" -->
+        <!-- Delivery is disabled by default via "null://localhost" -->
+        <env name="MAILER_URL" value="null://localhost"/>
+        <!-- ###- symfony/swiftmailer-bundle ### -->
     </php>
 
     <testsuites>
@@ -30,7 +41,7 @@
     </listeners>
 
     <logging>
-        <log type="coverage-clover" target="var/log/coverage.xml"/>
+        <log type="coverage-clover" target="./var/coverage.xml"/>
+        <log type="coverage-text" target="php://stdout" />
     </logging>
-
 </phpunit>
