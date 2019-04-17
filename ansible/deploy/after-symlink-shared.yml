@@ -32,7 +32,7 @@
     arguments: --classmap-authoritative
     optimize_autoloader: yes
     working_dir: '{{ ansistrano_release_path.stdout }}'
-    no_dev: true
+    no_dev: false
     executable: '{{ php_path }}'
   when: application_env == 'prod'
 
