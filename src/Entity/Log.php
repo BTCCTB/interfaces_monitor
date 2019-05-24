@@ -144,6 +144,9 @@ class Log
      */
     public function getDurationColor() : string
     {
+        if ($this->getStatus() == 'error') {
+            return 'danger';
+        }
         if ($this->getDuration() === null) {
             $color = 'secondary';
         } elseif ($this->getDuration() < 30) {
@@ -168,6 +171,10 @@ class Log
 
     public function getDurationIcon(): string
     {
+        if ($this->getStatus() == 'error') {
+            return '<i class="fa fa-bomb"></i>';;
+        }
+
         if ($this->getDuration() === null) {
             $icon = '<i class="fa fa-question-circle"></i>';
         } elseif ($this->getDuration() < 30) {
