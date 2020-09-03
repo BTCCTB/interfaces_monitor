@@ -38,6 +38,11 @@ class Job
      */
     private $arrayLogs;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $command;
+
     public function __construct()
     {
         $this->logs = new ArrayCollection();
@@ -118,5 +123,17 @@ class Job
     public function getArrayLogs()
     {
         return $this->arrayLogs;
+    }
+
+    public function getCommand(): ?string
+    {
+        return $this->command;
+    }
+
+    public function setCommand(?string $command): self
+    {
+        $this->command = $command;
+
+        return $this;
     }
 }

@@ -11,6 +11,7 @@
         <h1 class="h2">Execution details</h1>
         <h2 class="h2">Job: {{ job.name }}</h2>
         <h3 class="h2">Frequency: {{ job.frequency }}</h3>
+        <a href="{{ path('run_job', { 'id': job.id }) }}">Run</a>
     </div>
 
     <div class="table-responsive">
