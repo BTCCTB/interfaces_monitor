@@ -1,6 +1,5 @@
 ###> phpstorm ###
-/.idea/*
-!/.idea/inspectionProfiles/Project_Default.xml
+/.idea/
 ###< phpstorm ###
 
 ###> symfony/framework-bundle ###
@@ -13,6 +12,7 @@
 !/var/log/.gitkeep
 /vendor/
 ###< symfony/framework-bundle ###
+
 ###> squizlabs/php_codesniffer ###
 /.phpcs-cache
 ###< squizlabs/php_codesniffer ###
@@ -20,14 +20,20 @@
 ###> symfony/phpunit-bridge ###
 .phpunit
 /phpunit.xml
+/var/coverage.xml
 ###< symfony/phpunit-bridge ###
 
 ###> Ansistrano ###
-ansible/.ssh/*
-!ansible/.ssh/.gitkeep
+/ansible/.ssh/*
+!/ansible/.ssh/.gitkeep
 ###< Ansistrano ###
 
 ###> docker ###
 /.docker/data/db/*
 !/.docker/data/db/.gitkeep
 ###< docker ###
+
+###> Makefile ###
+/composer.phar
+/symfony
+###< Makefile ###
