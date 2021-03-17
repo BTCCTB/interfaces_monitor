@@ -283,7 +283,7 @@
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "master",
             "version": "0.4",
-            "ref": "ee15ad002114fba7b694a7fe429419b518d43bc4"
+            "ref": "c066e57abc57851ffe788ea3af87b5ea10bf976f"
         },
         "files": [
             "config/packages/dev/php_translation.yaml",

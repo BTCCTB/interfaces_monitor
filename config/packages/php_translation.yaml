@@ -5,9 +5,8 @@ parameters:
 translation:
     locales: '%app.locales%'
     edit_in_place:
-        enabled: true
-        config_name: default
-        activator: php_translation.edit_in_place.activator
+        enabled: false
+        config_name: app
     configs:
         app:
             dirs: ["%kernel.project_dir%/templates", "%kernel.project_dir%/src"]
