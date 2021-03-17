@@ -20,8 +20,8 @@
 
 ###> symfony/phpunit-bridge ###
 .phpunit
+.phpunit.result.cache
 /phpunit.xml
-/var/coverage.xml
 ###< symfony/phpunit-bridge ###
 
 ###> Ansistrano ###
@@ -37,4 +37,5 @@
 ###> Makefile ###
 /composer.phar
 /symfony
+/var/coverage.xml
 ###< Makefile ###

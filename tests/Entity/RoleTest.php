@@ -27,7 +27,7 @@ class RoleTest extends KernelTestCase
     /**
      * {@inheritDoc}
      */
-    public function setUp()
+    public function setUp():void
     {
         $this->role = new Role();
         $this->roleData = [

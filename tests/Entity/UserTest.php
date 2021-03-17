@@ -30,7 +30,7 @@ class UserTest extends KernelTestCase
     /**
      * {@inheritDoc}
      */
-    protected function setUp()
+    protected function setUp():void
     {
         $this->userData = [
             'employeeNumber' => 1,

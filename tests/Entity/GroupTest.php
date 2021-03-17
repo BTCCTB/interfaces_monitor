@@ -29,7 +29,7 @@ class GroupTest extends KernelTestCase
     /**
      * {@inheritDoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->group = new Group();
         $this->groupData = [
