@@ -281,12 +281,12 @@
         ]
     },
     "php-translation/symfony-bundle": {
-        "version": "0.4",
+        "version": "0.10",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "master",
-            "version": "0.4",
-            "ref": "c066e57abc57851ffe788ea3af87b5ea10bf976f"
+            "version": "0.10",
+            "ref": "5c712c2758c3cccb964713f0061493b8ce2dd430"
         },
         "files": [
             "config/packages/dev/php_translation.yaml",
