@@ -3,7 +3,6 @@ grumphp:
         composer:
             file: ./composer.json
             no_check_all: true
-        securitychecker: ~
         clover_coverage:
             clover_file: ./var/coverage.xml
             level: 1 # Should be adapted to 50-70

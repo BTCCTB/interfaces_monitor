@@ -56,7 +56,6 @@
         "phpmd/phpmd": "^2.6",
         "phpro/grumphp": "^0.19",
         "sebastian/phpcpd": "^4.1",
-        "sensiolabs/security-checker": "^5.0",
         "squizlabs/php_codesniffer": "*",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
