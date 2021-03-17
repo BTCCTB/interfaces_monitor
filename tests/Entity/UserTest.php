@@ -8,6 +8,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Hslavich\OneloginSamlBundle\Security\User\SamlUserInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * Class UserTest
+ *
+ * @author Damien Lagae <damien.lagae@enabel.be>
+ * @group entity
+ * @group main
+ */
 class UserTest extends KernelTestCase
 {
     /**

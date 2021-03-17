@@ -120,10 +120,10 @@ phpunit.xml:
 	cp phpunit.xml.dist phpunit.xml
 
 test: phpunit.xml ## Launch main functionnal and unit tests
-	$(PHPUNIT) --group=main --stop-on-failure --debug
+	$(PHPUNIT) --group=main --stop-on-failure --testdox
 
 test-external: phpunit.xml ## Launch tests implying external resources (api, services...)
-	$(PHPUNIT) --group=external --stop-on-failure --debug
+	$(PHPUNIT) --group=external --stop-on-failure --testdox
 
 test-all: phpunit.xml ## Launch all tests
 	$(PHPUNIT) --stop-on-failure

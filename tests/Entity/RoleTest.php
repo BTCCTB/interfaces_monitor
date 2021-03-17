@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 /**
  * Class RoleTest
  *
- * @package App\Tests\Entity
- *
  * @author  Damien Lagae <damien.lagae@enabel.be>
+ * @group entity
+ * @group main
  */
 class RoleTest extends KernelTestCase
 {
