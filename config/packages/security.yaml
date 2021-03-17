@@ -15,7 +15,7 @@ security:
             anonymous: true
             saml:
                 username_attribute: uid
-                user_factory: 'App\Security\UserFactory'
+                user_factory: saml_user_factory
                 persist_user: true
                 check_path: /saml/acs
                 login_path: /saml/login
