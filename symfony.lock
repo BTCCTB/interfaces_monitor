@@ -29,6 +29,9 @@
     "composer/composer": {
         "version": "1.8.4"
     },
+    "composer/package-versions-deprecated": {
+        "version": "1.11.99.1"
+    },
     "composer/semver": {
         "version": "1.4.2"
     },
