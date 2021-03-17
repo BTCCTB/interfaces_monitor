@@ -19,7 +19,7 @@
         "ext-iconv": "*",
         "easycorp/easyadmin-bundle": "^2.1",
         "guzzlehttp/psr7": "^1.5",
-        "hslavich/oneloginsaml-bundle": "^1.5",
+        "hslavich/oneloginsaml-bundle": "^2.0",
         "jms/i18n-routing-bundle": "^3.0",
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/httplug-bundle": "^1.14",
@@ -27,24 +27,24 @@
         "php-translation/symfony-bundle": "^0.11",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/apache-pack": "^1.0",
-        "symfony/asset": "4.4.*",
-        "symfony/console": "4.4.*",
-        "symfony/dotenv": "4.4.*",
-        "symfony/expression-language": "4.4.*",
+        "symfony/asset": "5.2.*",
+        "symfony/console": "5.2.*",
+        "symfony/dotenv": "5.2.*",
+        "symfony/expression-language": "5.2.*",
         "symfony/flex": "^1.1",
-        "symfony/form": "4.4.*",
-        "symfony/framework-bundle": "4.4.*",
+        "symfony/form": "5.2.*",
+        "symfony/framework-bundle": "5.2.*",
         "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "*",
-        "symfony/process": "4.4.*",
-        "symfony/security-bundle": "4.4.*",
+        "symfony/process": "5.2.*",
+        "symfony/security-bundle": "5.2.*",
         "symfony/serializer-pack": "*",
         "symfony/swiftmailer-bundle": "^3.1",
-        "symfony/translation": "4.4.*",
-        "symfony/twig-bundle": "4.4.*",
-        "symfony/validator": "4.4.*",
-        "symfony/web-link": "4.4.*",
-        "symfony/yaml": "4.4.*"
+        "symfony/translation": "5.2.*",
+        "symfony/twig-bundle": "5.2.*",
+        "symfony/validator": "5.2.*",
+        "symfony/web-link": "5.2.*",
+        "symfony/yaml": "5.2.*"
     },
     "require-dev": {
         "jakub-onderka/php-console-highlighter": "^0.3.2",
@@ -55,7 +55,6 @@
         "escapestudios/symfony2-coding-standard": "^3.5",
         "phpmd/phpmd": "^2.6",
         "phpro/grumphp": "^0.19",
-        "sebastian/phpcpd": "^4",
         "squizlabs/php_codesniffer": "*",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
@@ -140,7 +139,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "4.4.*"
+            "require": "5.2.*"
         }
     }
 }
