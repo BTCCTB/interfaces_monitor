@@ -108,11 +108,5 @@
         <target>Frequency</target>
       </segment>
     </unit>
-    <unit id="BH8sxTq" name="main.menu.login.label">
-      <segment>
-        <source>main.menu.login.label</source>
-        <target>Login</target>
-      </segment>
-    </unit>
   </file>
 </xliff>
