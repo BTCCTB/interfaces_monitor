@@ -10,9 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 /**
  * Class GroupTest
  *
- * @package App\Tests\Entity
- *
  * @author  Damien Lagae <damien.lagae@enabel.be>
+ * @group entity
+ * @group main
  */
 class GroupTest extends KernelTestCase
 {
@@ -29,7 +29,7 @@ class GroupTest extends KernelTestCase
     /**
      * {@inheritDoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->group = new Group();
         $this->groupData = [

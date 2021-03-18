@@ -1,7 +1,7 @@
 version: '3'
 services:
-  mariadb:
-    image: mariadb
+  db:
+    image: mariadb:10.1.40
     volumes:
       - .docker/data/db:/var/lib/mysql
     environment:
@@ -22,14 +22,14 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
-      PMA_HOST: mariadb
+      PMA_HOST: db
       PMA_PORT: 3306
       PMA_USER: root
       PMA_PASSWORD: toor
     ports:
       - 8080:80
-    links:
-      - mariadb
+    depends_on:
+      - db
 
   maildev:
     image: mailhog/mailhog

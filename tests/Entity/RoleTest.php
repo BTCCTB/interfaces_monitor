@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 /**
  * Class RoleTest
  *
- * @package App\Tests\Entity
- *
  * @author  Damien Lagae <damien.lagae@enabel.be>
+ * @group entity
+ * @group main
  */
 class RoleTest extends KernelTestCase
 {
@@ -27,7 +27,7 @@ class RoleTest extends KernelTestCase
     /**
      * {@inheritDoc}
      */
-    public function setUp()
+    public function setUp():void
     {
         $this->role = new Role();
         $this->roleData = [

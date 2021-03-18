@@ -19,15 +19,15 @@ class UserFactory implements SamlUserFactoryInterface
     /**
      * Creates a new User object from SAML Token.
      *
-     * @param SamlTokenInterface $token SAML token
+     * @param SamlTokenInterface $username SAML token
+     * @param array              $attributes
      *
      * @return UserInterface
      */
-    public function createUser(SamlTokenInterface $token): UserInterface
+    public function createUser($username, array $attributes = []): UserInterface
     {
-        $attributes = $token->getAttributes();
         $user = new User();
-        $user->setSamlAttributes($attributes);
+        $user->setSamlAttributes($username->getAttributes());
 
         return $user;
     }

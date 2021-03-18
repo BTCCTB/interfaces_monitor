@@ -119,13 +119,24 @@ load-fixtures: schema ## Load fixtures
 phpunit.xml:
 	cp phpunit.xml.dist phpunit.xml
 
-test: phpunit.xml ## Launch main functionnal and unit tests
-	$(PHPUNIT) --group=main --stop-on-failure --debug
+schema-test: up ## Build the test db, control the schema validity and check the migration status
+	$(SYMFONY) doctrine:cache:clear-metadata --env=test
+	$(SYMFONY) doctrine:database:create --if-not-exists --env=test
+	$(SYMFONY) doctrine:migrations:migrate --env=test -q
 
-test-external: phpunit.xml ## Launch tests implying external resources (api, services...)
-	$(PHPUNIT) --group=external --stop-on-failure --debug
+load-fixtures-test: ## load fixtures
+	$(SYMFONY) doctrine:fixtures:load --env=test -n
 
-test-all: phpunit.xml ## Launch all tests
+db-test: schema-test ## Build the test db, control the schema validity, check the migration status and load fixtures
+
+
+test: phpunit.xml db-test ## Launch main functionnal and unit tests
+	$(PHPUNIT) --group=main --stop-on-failure --testdox
+
+test-external: phpunit.xml db-test ## Launch tests implying external resources (api, services...)
+	$(PHPUNIT) --group=external --stop-on-failure --testdox
+
+test-all: phpunit.xml db-test ## Launch all tests
 	$(PHPUNIT) --stop-on-failure
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
