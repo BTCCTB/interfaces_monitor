@@ -119,7 +119,7 @@ load-fixtures: schema ## Load fixtures
 phpunit.xml:
 	cp phpunit.xml.dist phpunit.xml
 
-schema-test: up ## Build the test db, control the schema validity and check the migration status
+schema-test: ## Build the test db, control the schema validity and check the migration status
 	$(SYMFONY) doctrine:cache:clear-metadata --env=test
 	$(SYMFONY) doctrine:database:create --if-not-exists --env=test
 	$(SYMFONY) doctrine:migrations:migrate --env=test -q
@@ -128,7 +128,6 @@ load-fixtures-test: ## load fixtures
 	$(SYMFONY) doctrine:fixtures:load --env=test -n
 
 db-test: schema-test ## Build the test db, control the schema validity, check the migration status and load fixtures
-
 
 test: phpunit.xml db-test ## Launch main functionnal and unit tests
 	$(PHPUNIT) --group=main --stop-on-failure --testdox
@@ -154,10 +153,10 @@ mess: ## Run PHP Mess Dectector only
 cs-fix: ## Run php-cs-fixer and fix the code.
 	./vendor/bin/php-cs-fixer fix src/
 
-check-security: ./symfony
+check-security: ./symfony ## Launch dependencies security check
 	$(SYMFONY_BIN) check:security
 
-check-requirements: ./symfony
+check-requirements: ./symfony ## Launch symfony requirements check
 	$(SYMFONY_BIN) check:requirements
 ## —— Deploy & Prod 🚀 —————————————————————————————————————————————————————————
 deploy-prod: ## Deploy on prod, no-downtime deployment with Ansistrano
