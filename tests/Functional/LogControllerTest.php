@@ -13,12 +13,15 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class LogControllerTest extends WebTestCase
 {
-    public function testMonitorIsAlive(): void
+    public function testHomepageIsAlive(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/');
+        $crawler = $client->request('GET', '/');
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertSelectorTextContains('h2', 'Last job execution time');
+        $this->assertResponseIsSuccessful();
+        $this->assertStringContainsString(
+            "Last job execution time",
+            $crawler->filter('main h1')->text()
+        );
     }
 }
