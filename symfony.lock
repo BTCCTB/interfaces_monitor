@@ -130,17 +130,13 @@
         ]
     },
     "easycorp/easyadmin-bundle": {
-        "version": "2.0",
+        "version": "3.0",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "2.0",
-            "ref": "0a51040a43c6f2172a3a0135cd15daf2043905d7"
-        },
-        "files": [
-            "config/packages/easy_admin.yaml",
-            "config/routes/easy_admin.yaml"
-        ]
+            "version": "3.0",
+            "ref": "b131e6cbfe1b898a508987851963fff485986285"
+        }
     },
     "egulias/email-validator": {
         "version": "2.1.7"
@@ -214,9 +210,6 @@
     "opis/closure": {
         "version": "3.6.1"
     },
-    "pagerfanta/pagerfanta": {
-        "version": "v2.1.2"
-    },
     "pdepend/pdepend": {
         "version": "2.5.2"
     },
@@ -226,26 +219,11 @@
     "php-http/discovery": {
         "version": "1.6.1"
     },
-    "php-http/guzzle6-adapter": {
-        "version": "v1.1.1"
+    "php-http/guzzle7-adapter": {
+        "version": "0.1.1"
     },
     "php-http/httplug": {
         "version": "v1.1.0"
-    },
-    "php-http/httplug-bundle": {
-        "version": "1.6",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.6",
-            "ref": "87b3d491d593d2c6e3b90bf0689ac69a188bfa5f"
-        },
-        "files": [
-            "config/packages/httplug.yaml"
-        ]
-    },
-    "php-http/logger-plugin": {
-        "version": "1.1.0"
     },
     "php-http/message": {
         "version": "1.7.2"
@@ -258,9 +236,6 @@
     },
     "php-http/promise": {
         "version": "v1.0.0"
-    },
-    "php-http/stopwatch-plugin": {
-        "version": "1.2.0"
     },
     "php-translation/common": {
         "version": "1.0.0"
@@ -298,15 +273,6 @@
     "php-translation/symfony-storage": {
         "version": "1.0.1"
     },
-    "phpdocumentor/reflection-common": {
-        "version": "1.0.1"
-    },
-    "phpdocumentor/reflection-docblock": {
-        "version": "4.3.0"
-    },
-    "phpdocumentor/type-resolver": {
-        "version": "0.4.0"
-    },
     "phpmd/phpmd": {
         "version": "2.6.0"
     },
@@ -321,6 +287,9 @@
     },
     "psr/event-dispatcher": {
         "version": "1.0.0"
+    },
+    "psr/http-client": {
+        "version": "1.0.1"
     },
     "psr/http-factory": {
         "version": "1.0.1"
@@ -369,9 +338,6 @@
         "files": [
             "phpcs.xml.dist"
         ]
-    },
-    "swiftmailer/swiftmailer": {
-        "version": "v6.2.0"
     },
     "symfony/apache-pack": {
         "version": "1.0",
@@ -498,6 +464,9 @@
             "src/Kernel.php"
         ]
     },
+    "symfony/http-client": {
+        "version": "v5.2.4"
+    },
     "symfony/http-client-contracts": {
         "version": "v2.3.1"
     },
@@ -510,6 +479,18 @@
     "symfony/intl": {
         "version": "v4.2.6"
     },
+    "symfony/mailer": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "15658c2a0176cda2e7dba66276a2030b52bd81b2"
+        },
+        "files": [
+            "config/packages/mailer.yaml"
+        ]
+    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -518,6 +499,9 @@
             "version": "1.0",
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
+    },
+    "symfony/mime": {
+        "version": "v5.2.5"
     },
     "symfony/monolog-bridge": {
         "version": "v4.2.4"
@@ -537,22 +521,31 @@
             "config/packages/test/monolog.yaml"
         ]
     },
+    "symfony/notifier": {
+        "version": "5.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.0",
+            "ref": "c31585e252b32fe0e1f30b1f256af553f4a06eb9"
+        },
+        "files": [
+            "config/packages/notifier.yaml"
+        ]
+    },
     "symfony/options-resolver": {
         "version": "v4.2.3"
-    },
-    "symfony/orm-pack": {
-        "version": "v1.0.6"
     },
     "symfony/panther": {
         "version": "v0.3.0"
     },
     "symfony/phpunit-bridge": {
-        "version": "4.3",
+        "version": "5.1",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "4.3",
-            "ref": "6d0e35f749d5f4bfe1f011762875275cd3f9874f"
+            "version": "5.1",
+            "ref": "bf16921ef8309a81d9f046e9b6369c46bcbd031f"
         },
         "files": [
             ".env.test",
@@ -585,6 +578,9 @@
     "symfony/polyfill-php80": {
         "version": "v1.22.1"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.22.1"
+    },
     "symfony/process": {
         "version": "v4.2.3"
     },
@@ -597,8 +593,14 @@
     "symfony/property-info": {
         "version": "v4.2.6"
     },
-    "symfony/proxy-manager-bridge": {
-        "version": "v4.4.20"
+    "symfony/requirements-checker": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "02c6e4b9b117c39e8a23eab7f3840ef6e62293b9"
+        }
     },
     "symfony/routing": {
         "version": "5.1",
@@ -641,9 +643,6 @@
     "symfony/serializer": {
         "version": "v4.2.6"
     },
-    "symfony/serializer-pack": {
-        "version": "v1.0.2"
-    },
     "symfony/service-contracts": {
         "version": "v2.2.0"
     },
@@ -652,20 +651,6 @@
     },
     "symfony/string": {
         "version": "v5.2.4"
-    },
-    "symfony/swiftmailer-bundle": {
-        "version": "2.5",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "2.5",
-            "ref": "ae4d22af30bbd484506bc1817c5a3ef72c855b93"
-        },
-        "files": [
-            "config/packages/dev/swiftmailer.yaml",
-            "config/packages/swiftmailer.yaml",
-            "config/packages/test/swiftmailer.yaml"
-        ]
     },
     "symfony/test-pack": {
         "version": "v1.0.5"
@@ -702,6 +687,9 @@
             "config/packages/twig.yaml",
             "templates/base.html.twig"
         ]
+    },
+    "symfony/uid": {
+        "version": "v5.2.4"
     },
     "symfony/validator": {
         "version": "4.3",
@@ -753,6 +741,9 @@
         "files": [
             "config/packages/twig_extensions.yaml"
         ]
+    },
+    "twig/extra-bundle": {
+        "version": "v3.3.0"
     },
     "twig/twig": {
         "version": "v2.6.2"

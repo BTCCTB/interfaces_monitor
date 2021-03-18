@@ -2,7 +2,6 @@ parameters:
     env(LOCO_API_KEY): ''
 
 translation_adapter_loco:
-    httplug_client: httplug.client.loco
     index_parameter: 'id'
     projects:
         messages:

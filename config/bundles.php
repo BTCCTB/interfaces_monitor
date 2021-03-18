@@ -15,7 +15,6 @@ return [
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
     Hslavich\OneloginSamlBundle\HslavichOneloginSamlBundle::class => ['all' => true],
     JMS\I18nRoutingBundle\JMSI18nRoutingBundle::class => ['all' => true],
-    Http\HttplugBundle\HttplugBundle::class => ['all' => true],
-    Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => ['all' => true],
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
+    Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
 ];

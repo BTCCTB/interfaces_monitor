@@ -16,9 +16,9 @@ class LogControllerTest extends WebTestCase
     public function testMonitorIsAlive(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/');
+        $client->request('GET', '/');
 
-        $this->assertResponseIsSuccessful();
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $this->assertSelectorTextContains('h2', 'Last job execution time');
     }
 }

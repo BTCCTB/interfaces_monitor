@@ -1,7 +1,3 @@
-parameters:
-    locale: 'en'
-    app.locales: [en]
-
 translation:
     locales: '%app.locales%'
     edit_in_place:
