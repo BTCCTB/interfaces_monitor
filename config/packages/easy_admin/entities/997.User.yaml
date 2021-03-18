@@ -1,0 +1,24 @@
+easy_admin:
+  entities:
+    App_Entity_User:
+      class: App\Entity\User
+      disabled_actions: ['new', 'delete', 'export']
+      list:
+        title: admin.label.user.list
+        actions:
+          - { name: 'show', icon: 'search', label: admin.action.show }
+          - { name: 'edit', icon: 'pencil', label: admin.action.edit }
+      form:
+        fields:
+          - { type: 'group', label: form.user.label.personal_information, icon: 'address-card', columns: '6' }
+          - { property: 'employeeNumber', label: form.user.label.employeeNumber }
+          - { property: 'displayName', label: form.user.label.displayName }
+          - { property: 'email', type: 'email', label: form.user.label.email }
+          - { property: 'language', label: form.user.label.language }
+          - { type: 'group', label: form.user.label.group, icon: 'group', columns: '6' }
+          - { property: 'groups' }
+          - { type: 'group', label: form.user.label.log, icon: 'clock-o', columns: '6' }
+#          - { property: 'created_by', type: 'easyadmin_autocomplete', type_options: { class: App\Entity\User } }
+#          - { property: 'created_at', type: 'datetime' }
+#          - { property: 'updated_by', type: 'easyadmin_autocomplete', type_options: { class: App\Entity\User } }
+#          - { property: 'updated_at', type: 'datetime' }

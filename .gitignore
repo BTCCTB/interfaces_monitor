@@ -1,0 +1,41 @@
+###> phpstorm ###
+/.idea/
+###< phpstorm ###
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/cache/*
+/var/log/*
+!/var/log/.gitkeep
+/vendor/
+###< symfony/framework-bundle ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+###< squizlabs/php_codesniffer ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> Ansistrano ###
+/ansible/.ssh/*
+!/ansible/.ssh/.gitkeep
+###< Ansistrano ###
+
+###> docker ###
+/.docker/data/db/*
+!/.docker/data/db/.gitkeep
+###< docker ###
+
+###> Makefile ###
+/composer.phar
+/symfony
+/var/coverage.xml
+###< Makefile ###

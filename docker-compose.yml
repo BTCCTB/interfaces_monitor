@@ -1,0 +1,44 @@
+version: '3'
+services:
+  phpqa:
+    image: jakzal/phpqa:php7.2-alpine
+    volumes:
+      - ./:/project
+      - ./var/cache/phpqa/tmp:/tmp
+    working_dir: /project
+  db:
+    image: mariadb:10.1.40
+    volumes:
+      - .docker/data/db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: taskrunner
+      MYSQL_USER: taskrunner
+      MYSQL_PASSWORD: taskrunner
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - 3306:3306
+
+  sso:
+    image: enabel/docker-sso
+    volumes:
+      - .docker/data/sso/metadata:/var/simplesamlphp/metadata
+    ports:
+      - 443:443
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: toor
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+
+  maildev:
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
+      - 1025:1025

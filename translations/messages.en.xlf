@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en" trgLang="en">
+  <file id="messages.en">
+    <unit id="32Pvu_Y" name="admin.label.user.list">
+      <segment>
+        <source>admin.label.user.list</source>
+        <target>List of users</target>
+      </segment>
+    </unit>
+    <unit id="LRBrRDz" name="admin.label.user">
+      <segment>
+        <source>admin.label.user</source>
+        <target>User</target>
+      </segment>
+    </unit>
+    <unit id="067Wjk0" name="admin.label.group">
+      <segment>
+        <source>admin.label.group</source>
+        <target>Group</target>
+      </segment>
+    </unit>
+    <unit id="QssQn7H" name="admin.label.list">
+      <segment>
+        <source>admin.label.list</source>
+        <target>List</target>
+      </segment>
+    </unit>
+    <unit id="Kf_j88V" name="admin.label.new">
+      <segment>
+        <source>admin.label.new</source>
+        <target>New</target>
+      </segment>
+    </unit>
+    <unit id="gdMMD1U" name="admin.label.role">
+      <segment>
+        <source>admin.label.role</source>
+        <target>Role</target>
+      </segment>
+    </unit>
+    <unit id="5lU_Cmx" name="admin.action.show">
+      <notes>
+        <note>parameters:</note>
+        <note> '%entity_name%': App_Entity_User</note>
+        <note> '%entity_label%': App_Entity_User</note>
+        <note> '%entity_id%': '1'</note>
+      </notes>
+      <segment>
+        <source>admin.action.show</source>
+        <target>Show</target>
+      </segment>
+    </unit>
+    <unit id="G1MvxR." name="admin.action.edit">
+      <notes>
+        <note>parameters:</note>
+        <note> '%entity_name%': App_Entity_User</note>
+        <note> '%entity_label%': App_Entity_User</note>
+        <note> '%entity_id%': '1'</note>
+      </notes>
+      <segment>
+        <source>admin.action.edit</source>
+        <target>Edit</target>
+      </segment>
+    </unit>
+    <unit id="7draI6u" name="App_Entity_User">
+      <segment>
+        <source>App_Entity_User</source>
+        <target>User</target>
+      </segment>
+    </unit>
+    <unit id="SkCglvF" name="admin.label.back_to_monitor">
+      <segment>
+        <source>admin.label.back_to_monitor</source>
+        <target>Back to monitor</target>
+      </segment>
+    </unit>
+    <unit id="BDD_l3P" name="App_Entity_Job">
+      <segment>
+        <source>App_Entity_Job</source>
+        <target>Job</target>
+      </segment>
+    </unit>
+    <unit id="3VAj.IF" name="admin.label.job.list">
+      <notes>
+        <note>parameters:</note>
+        <note> '%entity_name%': App_Entity_Job</note>
+        <note> '%entity_label%': App_Entity_Job</note>
+      </notes>
+      <segment>
+        <source>admin.label.job.list</source>
+        <target>List of jobs</target>
+      </segment>
+    </unit>
+    <unit id="FL8KUX5" name="admin.label.job">
+      <segment>
+        <source>admin.label.job</source>
+        <target>Job</target>
+      </segment>
+    </unit>
+    <unit id="CgGk8fC" name="form.job.label.name">
+      <segment>
+        <source>form.job.label.name</source>
+        <target>Name</target>
+      </segment>
+    </unit>
+    <unit id="UM2sQiX" name="form.job.label.frequency">
+      <segment>
+        <source>form.job.label.frequency</source>
+        <target>Frequency</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

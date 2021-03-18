@@ -1,0 +1,163 @@
+{
+    "name": "enabel/interfaces_monitor",
+    "description": "Interfaces monitor",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Damien LAGAE",
+            "email": "damien.lagae@enabel.be"
+        },
+        {
+            "name": "Stéphane DELBEKE",
+            "email": "stephane.delbeke@enabel.be"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "ext-mbstring": "*",
+        "composer/package-versions-deprecated": "1.11.99.1",
+        "doctrine/annotations": "^1.0",
+        "doctrine/doctrine-bundle": "^2.1",
+        "doctrine/doctrine-migrations-bundle": "^3.0",
+        "doctrine/orm": "^2.7",
+        "phpdocumentor/reflection-docblock": "^5.2",
+        "easycorp/easyadmin-bundle": "^3.1",
+        "guzzlehttp/psr7": "^1.5",
+        "hslavich/oneloginsaml-bundle": "^2.0",
+        "jms/i18n-routing-bundle": "^3.0",
+        "php-http/guzzle7-adapter": "^0.1.0",
+        "php-translation/loco-adapter": "^0.11.0",
+        "php-translation/symfony-bundle": "^0.12.1",
+        "sensio/framework-extra-bundle": "^5.2",
+        "symfony/apache-pack": "^1.0",
+        "symfony/asset": "5.2.*",
+        "symfony/console": "5.2.*",
+        "symfony/dotenv": "5.2.*",
+        "symfony/expression-language": "5.2.*",
+        "symfony/flex": "^1.1",
+        "symfony/form": "5.2.*",
+        "symfony/framework-bundle": "5.2.*",
+        "symfony/http-client": "5.2.*",
+        "symfony/intl": "5.2.*",
+        "symfony/mailer": "5.2.*",
+        "symfony/mime": "5.2.*",
+        "symfony/monolog-bundle": "^3.1",
+        "symfony/notifier": "5.2.*",
+        "symfony/process": "5.2.*",
+        "symfony/property-access": "5.2.*",
+        "symfony/property-info": "5.2.*",
+        "symfony/requirements-checker": "^2.0",
+        "symfony/proxy-manager-bridge": "5.2.*",
+        "symfony/security-bundle": "5.2.*",
+        "symfony/serializer": "5.2.*",
+        "symfony/string": "5.2.*",
+        "symfony/translation": "5.2.*",
+        "symfony/twig-bundle": "^5.2",
+        "symfony/validator": "5.2.*",
+        "symfony/web-link": "5.2.*",
+        "symfony/yaml": "5.2.*",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0"
+    },
+    "require-dev": {
+        "escapestudios/symfony2-coding-standard": "^3.5",
+        "jakub-onderka/php-console-highlighter": "^0.3.2",
+        "jakub-onderka/php-parallel-lint": "^0.9.2",
+        "phpmd/phpmd": "^2.6",
+        "phpro/grumphp": "^0.19",
+        "squizlabs/php_codesniffer": "*",
+        "symfony/browser-kit": "^5.2",
+        "symfony/css-selector": "^5.2",
+        "symfony/debug-bundle": "^5.2",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/phpunit-bridge": "^5.2",
+        "symfony/stopwatch": "^5.2",
+        "symfony/var-dumper": "^5.2",
+        "symfony/web-profiler-bundle": "^5.2"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "replace": {
+        "paragonie/random_compat": "2.*",
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php71": "*",
+        "symfony/polyfill-php70": "*",
+        "symfony/polyfill-php56": "*"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "requirements-checker": "script"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ],
+        "docker:build": [
+            "docker-compose build"
+        ],
+        "docker:serve": [
+            "docker-compose up -d"
+        ],
+        "docker:stop": [
+            "docker-compose stop"
+        ],
+        "docker:cleanup": [
+            "docker-compose rm"
+        ],
+        "db:init": [
+            "docker-compose run php bin/console doctrine:database:drop --if-exists --force",
+            "docker-compose run php bin/console doctrine:database:create",
+            "docker-compose run php bin/console doctrine:migrations:migrate"
+        ],
+        "db:migrate": [
+            "docker-compose run php bin/console doctrine:migrations:migrate"
+        ],
+        "db:diff": [
+            "docker-compose run php bin/console doctrine:migrations:diff"
+        ],
+        "docker:sf:console": [
+            "docker-compose run php bin/console -n"
+        ]
+    },
+    "scripts-descriptions": {
+        "docker:build": "Build the full stack [Apache/PHP/MariaDB/SSO/phpmyadmin/maildev] instance with docker",
+        "docker:serve": "Start the full stack [Apache/PHP/MariaDB/SSO/phpmyadmin/maildev] instance with docker",
+        "docker:stop": "Stop the full stack [Apache/PHP/MariaDB/SSO/phpmyadmin/maildev] instance with docker",
+        "docker:cleanup": "Remove the full stack [Apache/PHP/MariaDB/SSO/phpmyadmin/maildev] instance with docker",
+        "docker:sf:console": "Execute the bin/console from Symfony in the php docker instance",
+        "db:init": "Initialize the database in the mariadb docker instance",
+        "db:migrate": "Execute doctrine migrations in the mariadb docker instance",
+        "db:diff": "Check the database schema & create migration if needed"
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true,
+            "require": "5.2.*"
+        }
+    }
+}

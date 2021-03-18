@@ -1,0 +1,20 @@
+easy_admin:
+  entities:
+    App_Entity_Role:
+      class: App\Entity\Role
+      disabled_actions: ['export']
+      list:
+        title: admin.label.role.list
+        actions:
+          - { name: 'show', icon: 'search', label: admin.action.show }
+          - { name: 'edit', icon: 'pencil', label: admin.action.edit }
+      form:
+        fields:
+          - { type: 'group', label: form.role.label.general_info, icon: 'info', columns: '6' }
+          - { property: 'friendlyName', label: form.role.label.name }
+          - { property: 'technicalName', label: form.role.label.key }
+          - { type: 'group', label: form.role.label.log, icon: 'clock-o', columns: '6' }
+#          - { property: 'created_by', type: 'easyadmin_autocomplete', type_options: { class: App\Entity\Role } }
+#          - { property: 'created_at', type: 'datetime' }
+#          - { property: 'updated_by', type: 'easyadmin_autocomplete', type_options: { class: App\Entity\Role } }
+#          - { property: 'updated_at', type: 'datetime' }

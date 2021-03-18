@@ -1,0 +1,39 @@
+easy_admin:
+  design:
+    menu:
+      - label: admin.label.job
+        icon: 'cogs'
+        children:
+          - label: admin.label.list
+            icon: 'list'
+            entity: App_Entity_Job
+          - label: admin.label.new
+            icon: 'plus-circle'
+            entity: App_Entity_Job
+            params: {action: 'new'}
+      - label: admin.label.user
+        icon: 'user'
+        entity: App_Entity_User
+      - label: admin.label.group
+        icon: 'group'
+        children:
+          - label: admin.label.list
+            icon: 'list'
+            entity: App_Entity_Group
+          - label: admin.label.new
+            icon: 'plus-circle'
+            entity: App_Entity_Group
+            params: {action: 'new'}
+      - label: admin.label.role
+        icon: 'key'
+        children:
+          - label: admin.label.list
+            icon: 'list'
+            entity: App_Entity_Role
+          - label: admin.label.new
+            icon: 'plus-circle'
+            entity: App_Entity_Role
+            params: {action: 'new'}
+      - label: admin.label.back_to_monitor
+        icon: 'tachometer'
+        route: 'log_index'

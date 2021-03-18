@@ -1,0 +1,62 @@
+parameters:
+  # Adds a fallback if the env var is not set.
+  # This allows you to run cache:warmup even if your
+  # environment variables are not available yet.
+  # You should not need to change this value.
+  env(DATABASE_URL): ''
+  env(IDP_ENTITY_ID): ''
+  env(IDP_SIGN_ON_URL): ''
+  env(IDP_SIGN_ON_BINDING): ''
+  env(IDP_LOGOUT_URL): ''
+  env(IDP_LOGOUT_BINDING): ''
+  env(IDP_X509): ''
+  env(SP_ENTITY_ID): ''
+  env(SP_ACS_URL): ''
+  env(SP_ACS_BINDING): ''
+  env(SP_LOGOUT_URL): ''
+  env(SP_LOGOUT_BINDING): ''
+  env(SP_KEY): ''
+  env(BASE_URL): ''
+
+hslavich_onelogin_saml:
+  # Basic settings
+  idp:
+    entityId: '%env(resolve:IDP_ENTITY_ID)%'
+    singleSignOnService:
+      url: '%env(resolve:IDP_SIGN_ON_URL)%'
+      binding: '%env(resolve:IDP_SIGN_ON_BINDING)%'
+    singleLogoutService:
+      url: '%env(resolve:IDP_LOGOUT_URL)%'
+      binding: '%env(resolve:IDP_LOGOUT_BINDING)%'
+    x509cert: '%env(resolve:IDP_X509)%'
+  sp:
+    entityId: '%env(resolve:SP_ENTITY_ID)%'
+    assertionConsumerService:
+      url: '%env(resolve:SP_ACS_URL)%'
+      binding: '%env(resolve:SP_ACS_BINDING)%'
+    singleLogoutService:
+      url: '%env(resolve:SP_LOGOUT_URL)%'
+      binding: '%env(resolve:SP_LOGOUT_BINDING)%'
+    privateKey: '%env(resolve:SP_KEY)%'
+  # Optional settings
+  baseurl: '%env(resolve:BASE_URL)%'
+  strict: false
+  debug: false
+  security:
+    nameIdEncrypted:       false
+    authnRequestsSigned:   false
+    logoutRequestSigned:   false
+    logoutResponseSigned:  false
+    wantMessagesSigned:    false
+    wantAssertionsSigned:  false
+    wantNameIdEncrypted:   false
+    requestedAuthnContext: true
+    signMetadata: false
+    wantXMLValidation: true
+    signatureAlgorithm: 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'
+    digestAlgorithm: 'http://www.w3.org/2001/04/xmlenc#sha256'
+  organization:
+    en:
+      name: 'Enabel'
+      displayname: 'Enabel'
+      url: 'http://enabel.be'

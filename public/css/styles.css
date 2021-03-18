@@ -1,0 +1,66 @@
+body {
+  font-size: .875rem;
+}
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, .25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+[role="main"] {
+  padding-top: 133px; /* Space for fixed navbar */
+}
+
+@media (min-width: 768px) {
+  [role="main"] {
+    padding-top: 48px; /* Space for fixed navbar */
+  }
+}
+table.log,
+table.log > tbody,
+table.log > tbody > tr,
+table.log > tbody > tr > td {
+  vertical-align: middle;
+}
+td.job_frequency {
+  text-align: left;
+}
+td.job_name {
+  text-align: left;
+}
+td.job_name > a,
+td.job_name > a:visited,
+td.job_name > a:active
+{
+  color: inherit;
+  text-decoration: none;
+}
+td.job_execution {
+  text-align: center;
+}
+td.job_execution > span.job_date {
+  font-size: xx-small;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #fff;
+  margin-top: 10px;
+}

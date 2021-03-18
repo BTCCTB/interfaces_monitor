@@ -1,0 +1,24 @@
+grumphp:
+    tasks:
+        composer:
+            file: ./composer.json
+            no_check_all: true
+        clover_coverage:
+            clover_file: ./var/coverage.xml
+            level: 1 # Should be adapted to 50-70
+        phpcs:
+            standard: "phpcs.xml"
+            report: "full"
+        phpmd:
+            ruleset: ['codesize.xml']
+            exclude: ['assets', 'bin', 'config', '.docker', 'public', 'templates', 'tests', 'translations', 'var', 'vendor']
+        phpcpd:
+            directory: ['src']
+            exclude: ['assets', 'bin', 'config', '.docker', 'public', 'templates', 'tests', 'translations', 'var', 'vendor']
+            min_lines: 5
+            min_tokens: 70
+        phpunitbridge:
+            always_execute: true
+        phpversion:
+            project: '7.2'
+        yamllint: ~

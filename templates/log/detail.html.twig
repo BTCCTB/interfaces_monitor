@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('log_index') }}"><i class="fa fa-chevron-left"></i> Back</a>
+            </li>
+        </ul>
+
+        <h1 class="h2">Execution details</h1>
+        <h2 class="h2">Job: {{ job.name }}</h2>
+        <h3 class="h2">Frequency: {{ job.frequency }}</h3>
+        <a href="{{ path('run_job', { 'id': job.id }) }}">Run</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Execution time</th>
+                    <th>Status</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr class="table-{{ log.durationColor }} list-group-item-{{ log.durationColor }}">
+                    <td>{{ log.id }}</td>
+                    <td>{{ log.start|date('d/m/Y H:i:s') }}</td>
+                    <td>{{ log.end|date('d/m/Y H:i:s') }}</td>
+                    <td>{{ log.prettyDuration }}</td>
+                    <td>{{ log.durationIcon|raw }} {{ log.status }}</td>
+                    <td>{{ log.message }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+{% block sidebar %}
+    {% include 'log/_sidebar.html.twig' %}
+{% endblock %}
+

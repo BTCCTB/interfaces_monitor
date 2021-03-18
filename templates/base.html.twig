@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <title>{% block title %}Job Monitor{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="refresh" content="60" />
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v={{ 'now'|date('u') }}">
+        {% endblock %}
+    </head>
+
+    {% block body %}
+    <body>
+        {% block nav %}
+        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('log_index') }}">Enabel / Job Monitor</a>
+            <ul class="navbar-nav px-3">
+                {%  if is_granted('ROLE_USER') %}
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="{{ path('saml_logout') }}"><i class="fa fa-user"></i> {{ app.user.username }} <i class="fa fa-caret-right"></i> {{ 'main.menu.logout.label'|trans }}</a>
+                </li>
+                {% else %}
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="{{ path('saml_login') }}"><i class="fa fa-lock"></i> {{ 'main.menu.login.label'|trans }}</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endblock %}
+        {% block content %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 d-none d-md-block bg-light sidebar">
+                    {% block sidebar %}{% endblock %}
+                </div>
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                {% block main %}{% endblock %}
+                </main>
+            </div>
+        </div>
+        {% endblock %}
+        {% block footer %}
+        <footer class="footer">
+            <div class="container text-center">
+                <span class="text-muted">Made with <i class="fa fa-heart" style="color: red;"></i> by Enabel</span>
+            </div>
+        </footer>
+    {% endblock %}
+
+
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+            <script>
+                $('.dropdown-toggle').dropdown();
+            </script>
+        {% endblock %}
+    </body>
+    {% endblock %}
+</html>
