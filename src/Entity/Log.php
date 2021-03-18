@@ -172,7 +172,7 @@ class Log
     public function getDurationIcon(): string
     {
         if ($this->getStatus() == 'error') {
-            return '<i class="fa fa-bomb"></i>';;
+            return '<i class="fa fa-bomb"></i>';
         }
 
         if ($this->getDuration() === null) {

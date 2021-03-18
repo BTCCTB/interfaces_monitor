@@ -1,5 +1,11 @@
 version: '3'
 services:
+  phpqa:
+    image: jakzal/phpqa:php7.2-alpine
+    volumes:
+      - ./:/project
+      - ./var/cache/phpqa/tmp:/tmp
+    working_dir: /project
   db:
     image: mariadb:10.1.40
     volumes:

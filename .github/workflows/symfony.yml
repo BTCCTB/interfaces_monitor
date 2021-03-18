@@ -11,7 +11,35 @@ env:
     APP_ENV: test
 
 jobs:
-    phpunit:
+    security-checker:
+        name: Dependencies security check
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Security checker
+              run: make check-security
+
+    coding-standards:
+        name: Dependencies security check
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Code Sniffer [PHP-CS]
+              uses: docker://jakzal/phpqa:php7.2-alpine
+              with:
+                args: phpcs -v --standard=PSR2 --ignore=./src/Kernel.php ./src
+            - name: PHPStan
+              uses: docker://jakzal/phpqa:php7.2-alpine
+              with:
+                args: phpstan analyze ./src/ -l 1
+            - name: Twig lint
+              uses: docker://jakzal/phpqa:php7.2-alpine
+              with:
+                args: twig-lint lint ./templates
+
+    tests:
         name: Tests (PHP ${{ matrix.php-versions }})
         # https://hub.docker.com/_/ubuntu/
         runs-on: ubuntu-latest
@@ -28,10 +56,8 @@ jobs:
         strategy:
             fail-fast: true
             matrix:
-                php-versions: ['7.4', '8.0']
+                php-versions: ['7.2']
         steps:
-            # —— Setup Github actions 🐙 —————————————————————————————————————————————
-            # https://github.com/actions/checkout (official)
             - name: Checkout
               uses: actions/checkout@v2
 
@@ -62,7 +88,11 @@ jobs:
             - name: Install Composer dependencies
               run: make install
 
-            ## —— Tests ✅ ———————————————————————————————————————————————————————————
+            # —— Symfony 🎵 ——————————————————————————————————————————————————————————
+            - name: Check requirements
+              run: make check-requirements
+
+            # —— Tests ✅ ———————————————————————————————————————————————————————————
             - name: Create & fill database
               run: make db-test
 

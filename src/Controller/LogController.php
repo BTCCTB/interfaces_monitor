@@ -33,9 +33,9 @@ class LogController extends AbstractController
      * @param LogRepository $logRepository
      * @param JobRepository $jobRepository
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function homepage(LogRepository $logRepository, JobRepository $jobRepository): \Symfony\Component\HttpFoundation\Response
+    public function homepage(LogRepository $logRepository, JobRepository $jobRepository): Response
     {
         $nbExec = 10;
         $jobs = $jobRepository->findAll();

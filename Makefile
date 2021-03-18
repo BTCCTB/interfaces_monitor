@@ -154,6 +154,11 @@ mess: ## Run PHP Mess Dectector only
 cs-fix: ## Run php-cs-fixer and fix the code.
 	./vendor/bin/php-cs-fixer fix src/
 
+check-security: ./symfony
+	$(SYMFONY_BIN) check:security
+
+check-requirements: ./symfony
+	$(SYMFONY_BIN) check:requirements
 ## —— Deploy & Prod 🚀 —————————————————————————————————————————————————————————
 deploy-prod: ## Deploy on prod, no-downtime deployment with Ansistrano
 	ansible-playbook ansible/deploy.yml -l production
