@@ -12,6 +12,7 @@ COMPOSER      = $(EXEC_PHP) composer.phar
 DOCKER        = docker-compose
 DOCKER_EXEC   = docker-compose exec
 PHPUNIT       = $(EXEC_PHP) bin/phpunit
+PHPQA		  = $(DOCKER) run --rm phpqa
 .DEFAULT_GOAL = help
 #.PHONY       = # Not needed for now
 
@@ -139,19 +140,22 @@ test-all: phpunit.xml db-test ## Launch all tests
 	$(PHPUNIT) --stop-on-failure
 
 ## —— Coding standards ✨ ——————————————————————————————————————————————————————
-cs: codesniffer mess stan ## Launch check style and static analysis
+cs: codesniffer mess stan twig-lint ## Launch check style and static analysis
 
 codesniffer: ## Run php_codesniffer only
-	./vendor/bin/phpcs --standard=phpcs.xml -n -p src/
+	$(PHPQA) phpcs -v --standard=PSR12 --ignore=./src/Kernel.php ./src
 
 stan: ## Run PHPStan only
-	./vendor/bin/phpstan analyse --memory-limit 1G -c phpstan.neon
+	$(PHPQA) phpstan analyze ./src/ -l 1
 
 mess: ## Run PHP Mess Dectector only
-	./vendor/bin/phpmd src/ text ./codesize.xml
+	$(PHPQA) phpmd ./src/ ansi ./codesize.xml
 
 cs-fix: ## Run php-cs-fixer and fix the code.
-	./vendor/bin/php-cs-fixer fix src/
+	$(PHPQA) php-cs-fixer fix src/
+
+twig-lint: ## Run twig lint
+	$(PHPQA) twig-lint lint ./templates
 
 check-security: ./symfony ## Launch dependencies security check
 	$(SYMFONY_BIN) check:security

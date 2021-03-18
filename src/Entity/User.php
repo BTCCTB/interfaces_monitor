@@ -23,7 +23,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements SamlUserInterface, EquatableInterface
 {
-    const DEFAULTLANGUAGE = 'EN';
+    public const DEFAULTLANGUAGE = 'EN';
 
     /**
      * @ORM\Id()
@@ -71,7 +71,7 @@ class User implements SamlUserInterface, EquatableInterface
     /**
      * @return int|null
      */
-    public function getId():  ? int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -87,7 +87,7 @@ class User implements SamlUserInterface, EquatableInterface
     /**
      * @return string|null
      */
-    public function getEmail() :  ? string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -97,7 +97,7 @@ class User implements SamlUserInterface, EquatableInterface
      *
      * @return User
      */
-    public function setEmail(string $email) : self
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
@@ -107,7 +107,7 @@ class User implements SamlUserInterface, EquatableInterface
     /**
      * @return int|null
      */
-    public function getEmployeeNumber():  ? int
+    public function getEmployeeNumber(): ?int
     {
         return $this->employeeNumber;
     }
@@ -117,7 +117,7 @@ class User implements SamlUserInterface, EquatableInterface
      *
      * @return User
      */
-    public function setEmployeeNumber(int $employeeNumber) : self
+    public function setEmployeeNumber(int $employeeNumber): self
     {
         $this->employeeNumber = $employeeNumber;
 
@@ -127,7 +127,7 @@ class User implements SamlUserInterface, EquatableInterface
     /**
      * @return string|null
      */
-    public function getDisplayName():  ? string
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
@@ -137,7 +137,7 @@ class User implements SamlUserInterface, EquatableInterface
      *
      * @return User
      */
-    public function setDisplayName(string $displayName) : self
+    public function setDisplayName(string $displayName): self
     {
         $this->displayName = $displayName;
 
@@ -147,7 +147,7 @@ class User implements SamlUserInterface, EquatableInterface
     /**
      * @return string|null
      */
-    public function getLanguage():  ? string
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
@@ -157,7 +157,7 @@ class User implements SamlUserInterface, EquatableInterface
      *
      * @return User
      */
-    public function setLanguage(string $language) : self
+    public function setLanguage(string $language): self
     {
         $this->language = $language;
 
@@ -312,7 +312,8 @@ class User implements SamlUserInterface, EquatableInterface
     {
         return (
             md5($this->getUsername()) === md5($user->getUsername())) &&
-            (md5(serialize($this->getRoles())) === md5(serialize($user->getRoles()))
-        );
+            (
+                md5(serialize($this->getRoles())) === md5(serialize($user->getRoles()))
+            );
     }
 }

@@ -6,19 +6,35 @@ grumphp:
         clover_coverage:
             clover_file: ./var/coverage.xml
             level: 1 # Should be adapted to 50-70
-        phpcs:
-            standard: "phpcs.xml"
-            report: "full"
-        phpmd:
-            ruleset: ['codesize.xml']
-            exclude: ['assets', 'bin', 'config', '.docker', 'public', 'templates', 'tests', 'translations', 'var', 'vendor']
-        phpcpd:
-            directory: ['src']
-            exclude: ['assets', 'bin', 'config', '.docker', 'public', 'templates', 'tests', 'translations', 'var', 'vendor']
-            min_lines: 5
-            min_tokens: 70
+        code_sniffer:
+            make_file: ~
+            task: codesniffer
+            triggered_by: [ php ]
+            metadata:
+                task: make
+        mess_detector:
+            make_file: ~
+            task: mess
+            triggered_by: [ php ]
+            metadata:
+                task: make
+        php_stan:
+            make_file: ~
+            task: stan
+            triggered_by: [ php ]
+            metadata:
+                task: make
+        twig_lint:
+            make_file: ~
+            task: twig-lint
+            triggered_by: [ twig ]
+            metadata:
+                task: make
+        security_checker:
+            make_file: ~
+            task: check-security
+            metadata:
+                task: make
         phpunitbridge:
             always_execute: true
-        phpversion:
-            project: '7.2'
         yamllint: ~

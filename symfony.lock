@@ -38,9 +38,6 @@
     "composer/spdx-licenses": {
         "version": "1.5.0"
     },
-    "composer/xdebug-handler": {
-        "version": "1.3.2"
-    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -141,9 +138,6 @@
     "egulias/email-validator": {
         "version": "2.1.7"
     },
-    "escapestudios/symfony2-coding-standard": {
-        "version": "3.5.2"
-    },
     "facebook/webdriver": {
         "version": "1.6.0"
     },
@@ -209,9 +203,6 @@
     },
     "opis/closure": {
         "version": "3.6.1"
-    },
-    "pdepend/pdepend": {
-        "version": "2.5.2"
     },
     "php-http/client-common": {
         "version": "1.9.1"
@@ -282,9 +273,6 @@
     "phpdocumentor/type-resolver": {
         "version": "1.4.0"
     },
-    "phpmd/phpmd": {
-        "version": "2.6.0"
-    },
     "phpro/grumphp": {
         "version": "v0.15.0"
     },
@@ -334,18 +322,6 @@
         },
         "files": [
             "config/packages/sensio_framework_extra.yaml"
-        ]
-    },
-    "squizlabs/php_codesniffer": {
-        "version": "3.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "3.0",
-            "ref": "0dc9cceda799fd3a08b96987e176a261028a3709"
-        },
-        "files": [
-            "phpcs.xml.dist"
         ]
     },
     "symfony/apache-pack": {

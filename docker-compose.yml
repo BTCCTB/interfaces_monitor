@@ -6,6 +6,7 @@ services:
       - ./:/project
       - ./var/cache/phpqa/tmp:/tmp
     working_dir: /project
+
   db:
     image: mariadb:10.1.40
     volumes:

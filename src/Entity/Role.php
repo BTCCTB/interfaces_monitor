@@ -44,7 +44,7 @@ class Role
     /**
      * @return int|null
      */
-    public function getId():  ? int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -52,7 +52,7 @@ class Role
     /**
      * @return string|null
      */
-    public function getFriendlyName() :  ? string
+    public function getFriendlyName(): ?string
     {
         return $this->friendlyName;
     }
@@ -62,7 +62,7 @@ class Role
      *
      * @return Role
      */
-    public function setFriendlyName(string $friendlyName) : self
+    public function setFriendlyName(string $friendlyName): self
     {
         $this->friendlyName = $friendlyName;
 
@@ -72,7 +72,7 @@ class Role
     /**
      * @return string|null
      */
-    public function getTechnicalName():  ? string
+    public function getTechnicalName(): ?string
     {
         return $this->technicalName;
     }
@@ -82,7 +82,7 @@ class Role
      *
      * @return Role
      */
-    public function setTechnicalName(string $technicalName) : self
+    public function setTechnicalName(string $technicalName): self
     {
         $this->technicalName = $technicalName;
 

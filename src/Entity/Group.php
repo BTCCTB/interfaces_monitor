@@ -46,7 +46,7 @@ class Group
     /**
      * @return int|null
      */
-    public function getId():  ? int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -54,7 +54,7 @@ class Group
     /**
      * @return string|null
      */
-    public function getName() :  ? string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -64,7 +64,7 @@ class Group
      *
      * @return Group
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
 

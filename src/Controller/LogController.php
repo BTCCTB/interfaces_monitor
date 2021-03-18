@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: stephane
- * Date: 25.02.19
- * Time: 14:28
- */
 
 namespace App\Controller;
 
 use App\Entity\Job;
-use App\Entity\Log;
 use App\Repository\JobRepository;
 use App\Repository\LogRepository;
 use App\Service\LaunchJobHandler;
@@ -19,7 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LogController extends AbstractController
 {
-
     private $launchJobHandler;
 
     public function __construct(LaunchJobHandler $launchJobHandler)

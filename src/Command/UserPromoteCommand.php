@@ -31,7 +31,8 @@ class UserPromoteCommand extends Command
     {
         $this
             ->setDescription('Promote a user by addind this user to admin group')
-            ->setHelp(<<<'EOT'
+            ->setHelp(
+                <<<'EOT'
 The <info>user:promote</info> command promotes a user by adding this user to admin group
   <info>php %command.full_name% firstname.lastname@enabel.be</info>
 EOT

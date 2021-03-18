@@ -42,65 +42,65 @@ class Log
      */
     private $job;
 
-    public function getId():  ? int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getStart() :  ? \DateTimeInterface
+    public function getStart(): ?\DateTimeInterface
     {
         return $this->start;
     }
 
-    public function setStart(? \DateTimeInterface $start) : self
+    public function setStart(?\DateTimeInterface $start): self
     {
         $this->start = $start;
 
         return $this;
     }
 
-    public function getEnd() :  ? \DateTimeInterface
+    public function getEnd(): ?\DateTimeInterface
     {
         return $this->end;
     }
 
-    public function setEnd(? \DateTimeInterface $end) : self
+    public function setEnd(?\DateTimeInterface $end): self
     {
         $this->end = $end;
 
         return $this;
     }
 
-    public function getStatus() :  ? string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setStatus(? string $status) : self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    public function getMessage() :  ? string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
-    public function setMessage(? string $message) : self
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 
         return $this;
     }
 
-    public function getJob() :  ? Job
+    public function getJob(): ?Job
     {
         return $this->job;
     }
 
-    public function setJob(? Job $job) : self
+    public function setJob(?Job $job): self
     {
         $this->job = $job;
 
@@ -112,7 +112,7 @@ class Log
      *
      * @return float|null The duration in minutes
      */
-    public function getDuration() :  ? float
+    public function getDuration(): ?float
     {
         if ($this->getEnd() !== null) {
             $deltaT = $this->getEnd()->format('U') - $this->getStart()->format('U');
@@ -128,7 +128,7 @@ class Log
      *
      * @return string|null The duration in human readable time
      */
-    public function getPrettyDuration() :  ? string
+    public function getPrettyDuration(): ?string
     {
         if ($this->getDuration() !== null) {
             return sprintf('%02d:%02d', floor($this->getDuration() / 60), $this->getDuration() % 60);
@@ -142,7 +142,7 @@ class Log
      *
      * @return string
      */
-    public function getDurationColor() : string
+    public function getDurationColor(): string
     {
         if ($this->getStatus() == 'error') {
             return 'danger';
