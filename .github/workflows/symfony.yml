@@ -53,8 +53,8 @@ jobs:
                 env:
                     MYSQL_ROOT_PASSWORD: toor
                     MYSQL_DATABASE: taskrunner_test
-                    MYSQL_USER: root
-                    MYSQL_PASSWORD: toor
+                    MYSQL_USER: user
+                    MYSQL_PASSWORD: password
                 ports:
                     - 3306:3306
         strategy:
@@ -98,7 +98,7 @@ jobs:
 
             # —— Tests ✅ ———————————————————————————————————————————————————————————
             - name: Create & fill database
-              run: make db-test
+              run: make load-fixtures
 
             - name: Run functionnal and unit tests
               run: make test
