@@ -11,27 +11,27 @@
             <tr>
                 <th>Job</th>
                 <th>Frequency</th>
-                <th colspan="{{ nbExec}}">Last {{ nbExec }} execution</th>
+                <th colspan="{{ nbExec }}">Last {{ nbExec }} execution</th>
             </tr>
             </thead>
             <tbody>
             {% for job in jobsLogs %}
                 <tr>
-                    <td class="job_name"><a href="{{ path('log_detail', { 'id': job.id }) }}"><i class="fa fa-chevron-circle-right"></i> {{ job.name }}</a></td>
+                    <td class="job_name"><a href="{{ path('log_detail', {'id': job.id}) }}"><i class="fa fa-chevron-circle-right"></i> {{ job.name }}</a></td>
                     <td class="job_frequency">{{ job.frequency }}</td>
                     {% set execution = nbExec %}
                     {% for log in job.arrayLogs %}
                         <td  class="job_execution list-group-item-{{ log.durationColor }}" data-toggle="tooltip"
-                             title="Execution time: {{ log.prettyDuration }} | Start time: {{ log.start|date('d/m/Y H:i:s')}} | End time: {{ log.end|date('d/m/Y H:i:s') }}
+                             title="Execution time: {{ log.prettyDuration }} | Start time: {{ log.start|date('d/m/Y H:i:s') }} | End time: {{ log.end|date('d/m/Y H:i:s') }}
                         {% if (log.status == "error") %}
                                     | Message : {{ log.message }}
                         {% endif %}
                             ">
                             {{ log.durationIcon|raw }}
                             <br/><span class="job_date">
-                                {{ log.start|date('d/m/Y')}}
+                                {{ log.start|date('d/m/Y') }}
                                 {% if job.frequency == 'hourly' %}
-                                <br/>{{ log.start|date('H:i:s')}}
+                                <br/>{{ log.start|date('H:i:s') }}
                                 {% endif %}
                             </span>
                         </td>

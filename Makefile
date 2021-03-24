@@ -156,6 +156,7 @@ cs-fix: ## Run php-cs-fixer and fix the code.
 
 twig-lint: ## Run twig lint
 	$(PHPQA) twig-lint lint ./templates
+	$(PHPQA) twigcs ./templates
 
 check-security: ./symfony ## Launch dependencies security check
 	$(SYMFONY_BIN) check:security
